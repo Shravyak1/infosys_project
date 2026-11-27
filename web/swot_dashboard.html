@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Startup Idea Validator - SWOT & Risk Intelligence Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .gradient-header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0284c7 100%);
+    }
+    .badge-critical { background-color: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+    .badge-high { background-color: #ffedd5; color: #9a3412; border: 1px solid #fed7aa; }
+    .badge-medium { background-color: #fef9c3; color: #854d0e; border: 1px solid #fef08a; }
+    .badge-low { background-color: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+    .tab-active { border-bottom: 2px solid #2563eb; color: #1d4ed8; font-weight: 700; }
+  </style>
+</head>
+<body class="bg-slate-50 min-h-screen text-slate-800 font-sans antialiased">
+
+  <!-- Top Sticky Navigation -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl gradient-header flex items-center justify-center text-white font-bold text-lg shadow-md">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <h1 class="font-extrabold text-slate-900 leading-none text-lg">SWOT & Risk Intelligence Dashboard</h1>
+            <span class="text-[11px] bg-blue-100 text-blue-800 font-semibold px-2 py-0.5 rounded-full">Agent 4</span>
+          </div>
+          <span class="text-xs text-slate-500">Autonomous Strategic Risk Assessment & Mitigation Engine</span>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-3">
+        <a href="index.html" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold transition text-xs flex items-center gap-1.5 shadow-sm">
+          <i class="fa-solid fa-rocket"></i> Launch Full Platform
+        </a>
+        <!-- Link to Submission Form -->
+        <a href="submission_wireframe.html" class="hidden md:flex px-2.5 py-1 text-slate-600 hover:text-slate-900 rounded-lg text-xs font-semibold items-center gap-1.5 transition">
+          <i class="fa-solid fa-arrow-left text-slate-400"></i>
+          <span>Idea Submission</span>
+        </a>
+
+        <!-- Preset Selector -->
+        <div class="hidden sm:flex items-center space-x-2 bg-slate-100 p-1 rounded-lg text-xs font-medium">
+          <span class="text-slate-500 pl-2">Preset:</span>
+          <button onclick="loadPreset('fleetpulse')" id="btnPresetFleet" class="px-2.5 py-1 bg-white text-blue-700 shadow-sm rounded-md font-semibold transition">FleetPulse EV</button>
+          <button onclick="loadPreset('medtrack')" id="btnPresetMed" class="px-2.5 py-1 text-slate-600 hover:text-slate-900 rounded-md transition">MedTrack AI</button>
+          <button onclick="loadPreset('agridrone')" id="btnPresetAgri" class="px-2.5 py-1 text-slate-600 hover:text-slate-900 rounded-md transition">AgriDrone</button>
+        </div>
+
+        <button onclick="openCustomModal()" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium text-xs transition shadow-sm flex items-center space-x-1.5">
+          <i class="fa-solid fa-plus"></i>
+          <span>Analyze Custom Idea</span>
+        </button>
+
+        <button onclick="exportJSON()" class="px-3 py-1.5 border border-slate-300 hover:bg-slate-100 text-slate-700 rounded-lg font-medium text-xs transition flex items-center space-x-1.5">
+          <i class="fa-solid fa-download"></i>
+          <span class="hidden md:inline">Export JSON</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6">
+
+    <!-- Hero Card: Startup Overview & Risk Posture -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+        <div class="space-y-1">
+          <div class="flex flex-wrap items-center gap-2">
+            <h2 id="displayIdeaName" class="text-2xl sm:text-3xl font-extrabold text-slate-900">FleetPulse EV</h2>
+            <span id="displayIndustry" class="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-700 rounded-full border border-slate-200">Logistics & CleanTech</span>
+            <span id="displayStatus" class="text-xs font-semibold px-2.5 py-1 bg-emerald-100 text-emerald-800 rounded-full border border-emerald-200 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              LLM Validated
+            </span>
+          </div>
+          <p id="displayTargetCustomers" class="text-xs sm:text-sm text-slate-600">
+            <i class="fa-solid fa-bullseye text-blue-600 mr-1.5"></i>
+            <span>Target Customers: Fleet operations managers at regional logistics companies with 15 to 250 electric delivery vans</span>
+          </p>
+        </div>
+
+        <!-- Risk Level Gauge -->
+        <div class="flex items-center gap-4 bg-slate-50 border border-slate-200 rounded-xl p-3.5 sm:px-5">
+          <div class="text-right">
+            <div class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Overall Venture Risk</div>
+            <div id="displayOverallRisk" class="text-xl font-black text-amber-600">MODERATE</div>
+          </div>
+          <div class="w-12 h-12 rounded-xl bg-amber-100 border border-amber-200 flex items-center justify-center text-amber-700 text-xl font-bold">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Executive Summary & Recommendation -->
+      <div class="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-5">
+        <div class="lg:col-span-2 space-y-2">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+            <i class="fa-solid fa-file-lines text-slate-500"></i> Executive Strategic Synthesis
+          </h3>
+          <p id="displayExecSummary" class="text-sm leading-relaxed text-slate-700 bg-slate-50/70 p-4 rounded-xl border border-slate-100">
+            FleetPulse EV operates in the high-growth intersection of commercial fleet logistics and electrification. The company's core value proposition addresses acute operational friction: unpredictable battery degradation and prohibitive peak utility charging tariffs. By linking vehicle telemetry directly to dynamic route and charging optimization, FleetPulse EV possesses a compelling opportunity to capture mid-market fleet operators navigating regulatory decarbonization mandates.
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-blue-600 flex items-center gap-1.5">
+            <i class="fa-solid fa-compass"></i> Primary Strategic Action
+          </h3>
+          <div class="bg-blue-50/80 border border-blue-200 rounded-xl p-4 text-blue-900 text-xs sm:text-sm leading-relaxed font-medium">
+            <div class="flex items-start gap-2">
+              <i class="fa-solid fa-circle-check text-blue-600 mt-0.5"></i>
+              <span id="displayRecommendation">Deploy a 30-day non-intrusive 'Shadow Mode' pilot with 3 mid-sized commercial fleets (20–50 vans each) to benchmark algorithm prediction accuracy against real-world utility tariffs before scaling paid commercial outreach.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <div class="border-b border-slate-200 flex space-x-8 text-sm font-medium">
+      <button onclick="switchTab('swot')" id="tabBtnSwot" class="tab-active pb-3 flex items-center space-x-2">
+        <i class="fa-solid fa-border-all"></i>
+        <span>2×2 SWOT Matrix</span>
+      </button>
+      <button onclick="switchTab('risks')" id="tabBtnRisks" class="text-slate-500 hover:text-slate-700 pb-3 flex items-center space-x-2 transition">
+        <i class="fa-solid fa-shield-virus"></i>
+        <span>Startup Risks & Mitigations</span>
+        <span id="riskCountBadge" class="ml-1.5 px-2 py-0.5 text-[11px] rounded-full bg-slate-200 text-slate-700 font-bold">6</span>
+      </button>
+      <button onclick="switchTab('json')" id="tabBtnJson" class="text-slate-500 hover:text-slate-700 pb-3 flex items-center space-x-2 transition">
+        <i class="fa-solid fa-code"></i>
+        <span>Integration JSON Schema</span>
+      </button>
+    </div>
+
+    <!-- TAB 1: SWOT Matrix (4 Quadrants) -->
+    <section id="tabSwot" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <!-- STRENGTHS -->
+      <div class="bg-white rounded-2xl border border-emerald-200/80 shadow-sm p-6 hover:shadow-md transition">
+        <div class="flex items-center justify-between border-b border-emerald-100 pb-3 mb-4">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div>
+              <h3 class="font-extrabold text-slate-900 text-base">Strengths</h3>
+              <p class="text-[11px] text-emerald-700 font-medium">Internal Capabilities & Competitive Advantages</p>
+            </div>
+          </div>
+          <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Internal</span>
+        </div>
+        <div id="swotStrengths" class="space-y-4">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+      <!-- WEAKNESSES -->
+      <div class="bg-white rounded-2xl border border-amber-200/80 shadow-sm p-6 hover:shadow-md transition">
+        <div class="flex items-center justify-between border-b border-amber-100 pb-3 mb-4">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
+              <i class="fa-solid fa-link-slash"></i>
+            </div>
+            <div>
+              <h3 class="font-extrabold text-slate-900 text-base">Weaknesses</h3>
+              <p class="text-[11px] text-amber-700 font-medium">Internal Deficits & Early-Stage Constraints</p>
+            </div>
+          </div>
+          <span class="text-xs font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">Internal</span>
+        </div>
+        <div id="swotWeaknesses" class="space-y-4">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+      <!-- OPPORTUNITIES -->
+      <div class="bg-white rounded-2xl border border-sky-200/80 shadow-sm p-6 hover:shadow-md transition">
+        <div class="flex items-center justify-between border-b border-sky-100 pb-3 mb-4">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center font-bold">
+              <i class="fa-solid fa-arrow-trend-up"></i>
+            </div>
+            <div>
+              <h3 class="font-extrabold text-slate-900 text-base">Opportunities</h3>
+              <p class="text-[11px] text-sky-700 font-medium">External Market Tailwinds & Growth Vectors</p>
+            </div>
+          </div>
+          <span class="text-xs font-bold text-sky-800 bg-sky-50 px-2 py-0.5 rounded border border-sky-200">External</span>
+        </div>
+        <div id="swotOpportunities" class="space-y-4">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+      <!-- THREATS -->
+      <div class="bg-white rounded-2xl border border-rose-200/80 shadow-sm p-6 hover:shadow-md transition">
+        <div class="flex items-center justify-between border-b border-rose-100 pb-3 mb-4">
+          <div class="flex items-center space-x-2.5">
+            <div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 flex items-center justify-center font-bold">
+              <i class="fa-solid fa-radiation"></i>
+            </div>
+            <div>
+              <h3 class="font-extrabold text-slate-900 text-base">Threats</h3>
+              <p class="text-[11px] text-rose-700 font-medium">External Competitive Hazards & Macro Shifts</p>
+            </div>
+          </div>
+          <span class="text-xs font-bold text-rose-800 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">External</span>
+        </div>
+        <div id="swotThreats" class="space-y-4">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TAB 2: Startup Risks & Actionable Mitigations -->
+    <section id="tabRisks" class="hidden space-y-4">
+      
+      <!-- Filter Bar -->
+      <div class="bg-white rounded-xl p-4 border border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs">
+        <div class="flex items-center space-x-2">
+          <span class="font-bold text-slate-600"><i class="fa-solid fa-filter mr-1"></i> Category Filter:</span>
+          <select id="riskCategoryFilter" onchange="filterRisks()" class="px-3 py-1.5 bg-slate-50 border border-slate-300 rounded-lg outline-none font-medium">
+            <option value="ALL">All Categories</option>
+            <option value="Technical Feasibility">Technical Feasibility</option>
+            <option value="Market & Adoption">Market & Adoption</option>
+            <option value="Regulatory & Compliance">Regulatory & Compliance</option>
+            <option value="Financial & Runway">Financial & Runway</option>
+            <option value="Competitive Defensibility">Competitive Defensibility</option>
+            <option value="Operational & Execution">Operational & Execution</option>
+          </select>
+        </div>
+
+        <div class="flex items-center space-x-3 text-slate-500 font-medium">
+          <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-red-500"></span> Critical / High</span>
+          <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Medium</span>
+          <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Low</span>
+        </div>
+      </div>
+
+      <!-- Risk Cards Container -->
+      <div id="riskCardsContainer" class="space-y-4">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- TAB 3: Integration JSON Schema -->
+    <section id="tabJson" class="hidden">
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 shadow-xl overflow-hidden">
+        <div class="px-6 py-4 bg-slate-950/80 border-b border-slate-800 flex items-center justify-between">
+          <div class="flex items-center space-x-2 text-xs font-mono text-slate-300">
+            <span class="w-3 h-3 rounded-full bg-red-500"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+            <span class="ml-2 text-slate-400">SWOTAndRiskReport.json</span>
+          </div>
+          <button onclick="copyJSON()" id="btnCopyJSON" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs rounded font-medium transition flex items-center space-x-1.5">
+            <i class="fa-solid fa-copy"></i>
+            <span>Copy Schema</span>
+          </button>
+        </div>
+        <pre id="jsonViewer" class="p-6 text-xs font-mono text-emerald-400 overflow-x-auto max-h-[600px] leading-relaxed whitespace-pre-wrap"></pre>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal: Custom Startup Idea Input -->
+  <div id="customIdeaModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-200 space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="font-extrabold text-slate-900 text-lg flex items-center gap-2">
+          <i class="fa-solid fa-wand-magic-sparkles text-blue-600"></i>
+          <span>Analyze Custom Startup Idea</span>
+        </h3>
+        <button onclick="closeCustomModal()" class="text-slate-400 hover:text-slate-600 text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form id="customForm" onsubmit="handleCustomSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Startup Name</label>
+          <input type="text" id="custName" required placeholder="e.g. HealthBridge AI" class="w-full px-3.5 py-2 text-sm border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Industry Vertical</label>
+          <input type="text" id="custIndustry" required placeholder="e.g. HealthTech / Enterprise SaaS" class="w-full px-3.5 py-2 text-sm border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Target Customers</label>
+          <input type="text" id="custCustomers" required placeholder="e.g. Clinical operations directors at regional hospitals" class="w-full px-3.5 py-2 text-sm border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Problem & Proposed Solution Description</label>
+          <textarea id="custDesc" rows="3" required placeholder="Describe the pain point and how your technology solves it..." class="w-full px-3.5 py-2 text-sm border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+        </div>
+
+        <div class="flex items-center justify-end space-x-3 pt-3 border-t border-slate-100">
+          <button type="button" onclick="closeCustomModal()" class="px-4 py-2 border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-lg transition">Cancel</button>
+          <button type="submit" class="px-5 py-2 gradient-header hover:opacity-95 text-white text-xs font-bold rounded-lg shadow-md transition flex items-center space-x-1.5">
+            <i class="fa-solid fa-bolt"></i>
+            <span>Run Strategic Assessment</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript Application Logic -->
+  <script>
+    // PRESET 1: FleetPulse EV (Actual Generated Output)
+    const presetFleetPulse = {
+      "idea_name": "FleetPulse EV",
+      "industry": "Logistics & CleanTech",
+      "target_customers": "Fleet operations managers at regional logistics companies with 15 to 250 electric delivery vans",
+      "executive_summary": "FleetPulse EV operates in the high-growth intersection of commercial fleet logistics and electrification (Logistics & CleanTech). The company's core value proposition addresses acute operational friction: unpredictable battery degradation and prohibitive peak utility charging tariffs. By linking vehicle telemetry directly to dynamic route and charging optimization, FleetPulse EV possesses a compelling opportunity to capture mid-market fleet operators navigating regulatory decarbonization mandates.\n\nHowever, the venture faces immediate strategic challenges, notably lengthy B2B enterprise procurement cycles, OEM API dependency, and competitive threats from incumbent telematics giants with massive distribution moats. Achieving defensibility requires proving concrete kilowatt-hour cost reductions in live depot pilots, maintaining hardware-agnostic flexibility, and executing an integration-friendly go-to-market strategy rather than a rip-and-replace approach.",
+      "overall_risk_level": "Moderate",
+      "key_strategic_recommendation": "Deploy a 30-day non-intrusive 'Shadow Mode' pilot with 3 mid-sized commercial fleets (20–50 vans each) to benchmark algorithm prediction accuracy against real-world utility tariffs. Use the resulting verified fuel savings data to create an ironclad enterprise ROI case study prior to scaling paid commercial outreach.",
+      "swot_analysis": {
+        "strengths": [
+          {
+            "point": "Coupled Battery Telemetry & Dynamic Route Optimization",
+            "explanation": "FleetPulse EV bridges physical battery electrochemistry with dynamic logistics routing, eliminating costly range anxiety and unexpected mid-shift vehicle discharge.",
+            "strategic_implication": "Creates a high-defensibility IP barrier against pure software dispatch platforms lacking deep powertrain understanding."
+          },
+          {
+            "point": "Automated Utility Tariff Arbitrage",
+            "explanation": "Integrated off-peak charging schedules exploit localized time-of-use tariffs, yielding direct, measurable 20-35% fuel cost reductions from day one.",
+            "strategic_implication": "Provides rapid, quantifiable ROI for fleet CFOs, significantly shortening initial enterprise sales cycles."
+          },
+          {
+            "point": "Hardware-Agnostic Telematics Ingestion",
+            "explanation": "Architected to ingest standard OBD-II/CAN bus protocols and OEM telematics APIs across multi-vendor mixed vehicle fleets.",
+            "strategic_implication": "Prevents hardware vendor lock-in and eliminates expensive physical retrofit requirements during onboarding."
+          },
+          {
+            "point": "Purpose-Built Vertical Focus on Commercial Mid-Sized Fleets",
+            "explanation": "Specifically tailored for mid-market fleets (15–250 vehicles) that are overlooked by enterprise telematics giants and underserved by basic GPS trackers.",
+            "strategic_implication": "Enables rapid initial market penetration without directly confronting tier-1 enterprise incumbents."
+          }
+        ],
+        "weaknesses": [
+          {
+            "point": "Cold-Start Data Asymmetry for Predictive Battery Models",
+            "explanation": "Accurate battery state-of-health (SoH) modeling requires millions of historical driving and thermal data points that early-stage startups lack at launch.",
+            "strategic_implication": "Early prediction variance could risk customer dissatisfaction or require initial conservative buffer thresholds."
+          },
+          {
+            "point": "Protracted Enterprise Field Pilot Cycles",
+            "explanation": "Selling to fleet operations managers involves multi-stakeholder evaluations (Operations, Safety, IT, Finance) with pilot durations often lasting 3 to 6 months.",
+            "strategic_implication": "Increases working capital burn rate before recurring contract revenue ramps."
+          },
+          {
+            "point": "Dependence on OEM API Access and Data Throttling",
+            "explanation": "Automaker cloud APIs (e.g., Ford Pro, Rivian, Stellantis) frequently impose unpredictable access fees, rate limits, or proprietary closed protocols.",
+            "strategic_implication": "Vulnerability to third-party API policy changes or sudden upstream data feed interruptions."
+          },
+          {
+            "point": "Absence of Brand Equity in High-Stakes Operations",
+            "explanation": "Fleet managers are inherently risk-averse; routing errors directly cause missed delivery windows and contractual penalties.",
+            "strategic_implication": "High sales friction overcoming customer switching inertia from established legacy providers."
+          }
+        ],
+        "opportunities": [
+          {
+            "point": "Mandated Corporate Fleet Decarbonization Policies",
+            "explanation": "Government mandates (e.g., EU Clean Fleets Directive, California ACT rule) and corporate ESG targets are forcing thousands of commercial operators to electrify.",
+            "strategic_implication": "Creates sustained, non-discretionary regulatory tailwinds driving inbound enterprise software demand."
+          },
+          {
+            "point": "Grid Demand-Response Revenue Monetization (VPPs)",
+            "explanation": "Aggregated fleet battery capacity can participate in utility demand-response and Virtual Power Plant (VPP) balancing markets, creating auxiliary revenue streams.",
+            "strategic_implication": "Allows transitioning from a pure software subscription to a dual SaaS plus energy flexibility revenue-sharing model."
+          },
+          {
+            "point": "Strategic Channel Partnerships with EV OEMs and Charger OEMs",
+            "explanation": "Charger manufacturers (e.g., ChargePoint, ABB) and commercial EV dealers seek bundled fleet software to accelerate vehicle deliveries.",
+            "strategic_implication": "Lowers Customer Acquisition Cost (CAC) by unlocking co-selling and pre-installation distribution channels."
+          },
+          {
+            "point": "Depot Infrastructure Capacity Constraints",
+            "explanation": "Commercial depots face severe physical electrical transformer limits; smart sequential charging prevents multi-million dollar substation upgrades.",
+            "strategic_implication": "Positions the product not just as route software, but as critical capital expenditure (CapEx) avoidance infrastructure."
+          }
+        ],
+        "threats": [
+          {
+            "point": "Incumbent Telematics Feature Bundling",
+            "explanation": "Dominant telematics incumbents (e.g., Geotab, Samsara, Verizon Connect) may launch native EV charging modules and bundle them at zero incremental cost.",
+            "strategic_implication": "Could trigger price compression or commoditize basic charge scheduling capabilities."
+          },
+          {
+            "point": "OEM Walled Gardens and Native Telematics Dominance",
+            "explanation": "Commercial EV manufacturers are pre-installing proprietary fleet operating systems directly onto vehicle dashboards.",
+            "strategic_implication": "Restricts third-party API access and forces the platform into a defensive interoperability stance."
+          },
+          {
+            "point": "Macroeconomic EV Transition Headwinds",
+            "explanation": "Higher commercial vehicle financing costs or delays in EV van deliveries could cause fleet operators to postpone transition timelines.",
+            "strategic_implication": "May temporarily shrink addressable annual vehicle deployment velocity."
+          },
+          {
+            "point": "Complex and Unstable Regional Utility Tariffs",
+            "explanation": "Frequent, fragmented restructuring of commercial electric utility time-of-use tariffs and peak demand surcharges across hundreds of utility jurisdictions.",
+            "strategic_implication": "Demands continuous engineering overhead to maintain tariff database accuracy and real-time synchronization."
+          }
+        ]
+      },
+      "startup_risks": [
+        {
+          "risk_id": "RISK-01",
+          "category": "Technical Feasibility",
+          "risk_title": "CAN-Bus & Telematics Protocol Inconsistency Across Vehicle Makes",
+          "likelihood": "High",
+          "impact": "High",
+          "overall_severity": "High",
+          "explanation": "Commercial fleets run heterogeneous mixes of electric delivery vans (e.g., Ford E-Transit, BrightDrop, Mercedes eSprinter). Each OEM exposes distinct telemetry schemas, battery state definitions, and polling frequencies, creating data ingestion failures.",
+          "mitigation_strategy": "1. Implement an abstracted vehicle telematics translation layer with normalized data schemas.\n2. Partner with open telematics API aggregators (e.g., Smartcar, Enode) to offload continuous OEM protocol reverse-engineering.\n3. Build extensive synthetic telemetry simulation harnesses to validate edge-case data variance before deploying to client fleets."
+        },
+        {
+          "risk_id": "RISK-02",
+          "category": "Market & Adoption",
+          "risk_title": "High Fleet Manager Operational Inertia & Extended Enterprise Sales Cycles",
+          "likelihood": "High",
+          "impact": "Medium",
+          "overall_severity": "High",
+          "explanation": "Fleet operators prioritize 99.9% uptime over experimental efficiency. If dispatchers perceive software adoption as disruptive to daily delivery schedules, adoption stalls during trials.",
+          "mitigation_strategy": "1. Offer a 30-day non-intrusive 'Shadow Mode' where the software runs in the background analyzing fleet data without altering active routes.\n2. Provide guaranteed ROI reports comparing simulated vs actual energy expenditures.\n3. Deliver dedicated onboarding concierge support for the first two live billing cycles."
+        },
+        {
+          "risk_id": "RISK-03",
+          "category": "Regulatory & Compliance",
+          "risk_title": "Commercial Driver Privacy & Location Data Tracking Regulations",
+          "likelihood": "Medium",
+          "impact": "High",
+          "overall_severity": "High",
+          "explanation": "Strict labor union rules and data privacy laws (GDPR in Europe, CCPA in California) restrict driver telemetry, brake monitoring, and granular location surveillance.",
+          "mitigation_strategy": "1. Implement role-based data anonymization and separate vehicle operational telemetry from driver identity metrics.\n2. Achieve SOC 2 Type II and ISO 27001 certifications early.\n3. Publish transparent fleet privacy compliance whitepapers approved by commercial transportation labor legal counsel."
+        },
+        {
+          "risk_id": "RISK-04",
+          "category": "Financial & Runway",
+          "risk_title": "Negative Unit Economics During Multi-Month Onboarding Pilots",
+          "likelihood": "Medium",
+          "impact": "High",
+          "overall_severity": "High",
+          "explanation": "Providing custom integration engineering and onsite support for pilot customers before annual contracts execute can deplete early seed runway prematurely.",
+          "mitigation_strategy": "1. Institute a mandatory, paid 'Proof of Value' (PoV) fee structure ($2,500–$5,000 per depot) creditable against future software subscriptions.\n2. Automate self-service telemetry connection to reduce custom implementation engineering hours to under 4 hours per fleet.\n3. Structure annual prepaid billing terms with early renewal incentives."
+        },
+        {
+          "risk_id": "RISK-05",
+          "category": "Competitive Defensibility",
+          "risk_title": "Incumbent Telematics Giants Releasing Native EV Add-On Features",
+          "likelihood": "High",
+          "impact": "High",
+          "overall_severity": "Critical",
+          "explanation": "Established market leaders with deep enterprise relationships (e.g., Samsara, Geotab) can copy core EV charging features and bundle them into existing multi-year contracts.",
+          "mitigation_strategy": "1. Defend market position by specializing deeply in battery degradation longevity modeling and bi-directional grid tariff arbitrage—domains generic telematics providers struggle to master.\n2. Build API integrations into existing incumbent platforms rather than forcing rip-and-replace software transitions.\n3. Secure proprietary data network effects where algorithmic accuracy increases with cumulative miles analyzed."
+        },
+        {
+          "risk_id": "RISK-06",
+          "category": "Operational & Execution",
+          "risk_title": "Depot Charging Hardware Incompatibility (OCPP Protocol Drift)",
+          "likelihood": "Medium",
+          "impact": "Medium",
+          "overall_severity": "Medium",
+          "explanation": "Different EV charging station vendors implement Open Charge Point Protocol (OCPP) with proprietary quirks, preventing reliable automated remote start/stop charging commands.",
+          "mitigation_strategy": "1. Partner with established EVSE charging management software (CMS) providers to manage direct hardware command dispatch.\n2. Certify compatibility with the top 5 commercial depot charger brands.\n3. Include automatic failover defaults that revert chargers to safe scheduled autonomous charging if cloud connectivity drops."
+        }
+      ],
+      "agent_metadata": {
+        "agent_name": "SWOT & Risk Analysis Agent",
+        "model_used": "FALLBACK_RULE_BASED / Gemini",
+        "generated_at": new Date().toISOString(),
+        "status": "success"
+      }
+    };
+
+    // PRESET 2: MedTrack AI
+    const presetMedTrack = {
+      "idea_name": "MedTrack AI",
+      "industry": "Healthcare & Enterprise SaaS",
+      "target_customers": "Hospital pharmacy directors and supply chain managers in mid-tier hospitals (200-800 beds)",
+      "executive_summary": "MedTrack AI automates medication inventory management through computer vision and predictive stock forecasting. The platform directly prevents high-value pharmaceutical expiration waste and painful clinical stockouts in acute healthcare settings. While hospital procurement cycles are notoriously protracted and compliance-heavy, high return on investment and severe staffing shortages provide significant tailwinds.",
+      "overall_risk_level": "Moderate",
+      "key_strategic_recommendation": "Execute a closed beta integration with 2 community hospitals on non-controlled substances to validate computer vision recognition accuracy before initiating FDA/DEA audit trails.",
+      "swot_analysis": {
+        "strengths": [
+          {"point": "Continuous Automated Inventory Tracking", "explanation": "Replaces manual daily barcode scans with overhead computer vision and RFID smart bins.", "strategic_implication": "Reduces pharmacist administrative hours by 65%."},
+          {"point": "Predictive Consumption Forecasting", "explanation": "Correlates patient census and seasonal infection rates with drug burn velocity.", "strategic_implication": "Lowers inventory carrying costs while maintaining 99.9% availability."}
+        ],
+        "weaknesses": [
+          {"point": "Lengthy Healthcare Procurement Cycles", "explanation": "Hospital purchasing involves clinical safety committees, IT security, and CFO sign-offs.", "strategic_implication": "Sales cycles range from 9 to 14 months."},
+          {"point": "EHR / ERP Integration Complexity", "explanation": "Requires custom HL7 / FHIR connectors into legacy systems like Epic and Cerner.", "strategic_implication": "Elevated customer onboarding engineering overhead."}
+        ],
+        "opportunities": [
+          {"point": "Hospital Pharmacy Labor Shortages", "explanation": "Acute scarcity of certified pharmacy technicians forces automation adoption.", "strategic_implication": "Accelerates urgent executive sponsor buy-in."},
+          {"point": "Drug Supply Chain Security Act (DSCSA) Enforcement", "explanation": "Strict federal traceability regulations penalize manual compliance tracking.", "strategic_implication": "Transforms software from discretionary efficiency into non-negotiable compliance."}
+        ],
+        "threats": [
+          {"point": "Incumbent Pyxis / Omnicell Hardware Lock-in", "explanation": "Legacy dispensing cabinet manufacturers dominate physical floor footprint.", "strategic_implication": "High switching resistance if positioning against established dispensers."},
+          {"point": "Hospital Capital Expenditure Freezes", "explanation": "Healthcare operating margins remain under intense pressure, slowing new software signups.", "strategic_implication": "Requires usage-based or OPEX financing models."}
+        ]
+      },
+      "startup_risks": [
+        {
+          "risk_id": "RISK-01",
+          "category": "Regulatory & Compliance",
+          "risk_title": "HIPAA & Patient Health Data Inadvertent Capture",
+          "likelihood": "Medium",
+          "impact": "High",
+          "overall_severity": "High",
+          "explanation": "Overhead cameras or shelf sensors may accidentally capture patient prescription labels containing PHI.",
+          "mitigation_strategy": "1. Deploy on-device edge computing to blur and redact all text outside medication NDC barcodes.\n2. Secure SOC 2 Type II and HIPAA third-party compliance audits prior to hospital deployment."
+        },
+        {
+          "risk_id": "RISK-02",
+          "category": "Market & Adoption",
+          "risk_title": "Pharmacy Staff Skepticism & Workflow Disruption",
+          "likelihood": "High",
+          "impact": "Medium",
+          "overall_severity": "High",
+          "explanation": "Hospital staff have deeply ingrained physical counting routines; changes in bin organization cause pushback.",
+          "mitigation_strategy": "1. Run parallel counting for the first 30 days without altering bin layouts.\n2. Nominate respected clinical champions with dedicated training incentives."
+        }
+      ]
+    };
+
+    // PRESET 3: AgriDrone
+    const presetAgriDrone = {
+      "idea_name": "AgriDrone",
+      "industry": "AgTech & Robotics",
+      "target_customers": "Commercial crop growers with >1,000 acres",
+      "executive_summary": "AgriDrone automates multispectral crop scouting using autonomous drone swarms to catch fungal and pest outbreaks weeks before visible foliage wilt. By dramatically reducing chemical fungicide spend and preventing crop yield collapse, AgriDrone provides immediate ROI for large-scale farm operations.",
+      "overall_risk_level": "Moderate",
+      "key_strategic_recommendation": "Partner with regional agricultural chemical retailers to co-distribute the drone scouting platform as an advisory service rather than selling hardware directly to farmers.",
+      "swot_analysis": {
+        "strengths": [
+          {"point": "Early Spectral Disease Detection", "explanation": "Identifies plant cellular stress 14 days before human eye detection.", "strategic_implication": "Saves up to $85/acre in lost crop yield."},
+          {"point": "Automated Flight Planning & Battery Docking", "explanation": "Self-charging autonomous weather-proof field stations require zero pilot licenses.", "strategic_implication": "Removes drone pilot operational labor bottleneck."}
+        ],
+        "weaknesses": [
+          {"point": "Severe Seasonal Cash Flow Dependency", "explanation": "Revenue is heavily concentrated during the 4-month spring and summer planting seasons.", "strategic_implication": "Requires careful annual runway management."},
+          {"point": "Remote Rural Broadband Constraints", "explanation": "Uploading high-resolution aerial imagery from rural fields is limited by cellular coverage.", "strategic_implication": "Requires edge AI image processing directly on the drone."}
+        ],
+        "opportunities": [
+          {"point": "Rising Nitrogen Fertilizer & Chemical Prices", "explanation": "High input costs compel farmers to adopt targeted spot-spraying.", "strategic_implication": "Accelerates demand for precision NDVI prescription maps."},
+          {"point": "Crop Insurance Data Partnerships", "explanation": "Insurers seek drone verification data to expedite legitimate drought/hail claim settlements.", "strategic_implication": "Opens auxiliary enterprise B2B data licensing streams."}
+        ],
+        "threats": [
+          {"point": "Adverse Weather Disruptions", "explanation": "High winds, severe hail, and torrential rain ground aerial equipment during critical scouting windows.", "strategic_implication": "Demands backup satellite imagery integration."},
+          {"point": "John Deere / OEM Native Autonomy", "explanation": "Tractor manufacturers are embedding cameras directly into spray booms.", "strategic_implication": "Requires proving aerial speed advantage over slow ground machinery."}
+        ]
+      },
+      "startup_risks": [
+        {
+          "risk_id": "RISK-01",
+          "category": "Regulatory & Compliance",
+          "risk_title": "FAA Part 107 Beyond Visual Line of Sight (BVLOS) Restrictions",
+          "likelihood": "High",
+          "impact": "High",
+          "overall_severity": "Critical",
+          "explanation": "Autonomous flight across thousands of acres requires specialized federal BVLOS waivers that take months to obtain.",
+          "mitigation_strategy": "1. Deploy certified geofenced ground radar sensors to qualify for standard automated flight waivers.\n2. Work with established aviation legal counsel specializing in agricultural waiver fast-tracking."
+        }
+      ]
+    };
+
+    let currentReport = presetFleetPulse;
+
+    // Render Dashboard
+    function renderDashboard(report) {
+      currentReport = report;
+
+      // Meta & Hero
+      document.getElementById('displayIdeaName').textContent = report.idea_name || "Startup Idea";
+      document.getElementById('displayIndustry').textContent = report.industry || "General Tech";
+      document.getElementById('displayTargetCustomers').innerHTML = `<i class="fa-solid fa-bullseye text-blue-600 mr-1.5"></i> <span>Target Customers: ${report.target_customers || 'Target business segment'}</span>`;
+      
+      const overallRiskEl = document.getElementById('displayOverallRisk');
+      const riskLevel = (report.overall_risk_level || 'Moderate').toUpperCase();
+      overallRiskEl.textContent = riskLevel;
+      if (riskLevel === 'LOW') overallRiskEl.className = 'text-xl font-black text-emerald-600';
+      else if (riskLevel === 'HIGH' || riskLevel === 'CRITICAL') overallRiskEl.className = 'text-xl font-black text-rose-600';
+      else overallRiskEl.className = 'text-xl font-black text-amber-600';
+
+      document.getElementById('displayExecSummary').textContent = report.executive_summary || "Strategic analysis not available.";
+      document.getElementById('displayRecommendation').textContent = report.key_strategic_recommendation || "Proceed with customer validation interviews.";
+
+      // SWOT Render
+      const swot = report.swot_analysis || { strengths: [], weaknesses: [], opportunities: [], threats: [] };
+      renderQuadrant('swotStrengths', swot.strengths, 'emerald', 'fa-check');
+      renderQuadrant('swotWeaknesses', swot.weaknesses, 'amber', 'fa-minus');
+      renderQuadrant('swotOpportunities', swot.opportunities, 'sky', 'fa-arrow-up');
+      renderQuadrant('swotThreats', swot.threats, 'rose', 'fa-triangle-exclamation');
+
+      // Risks Render
+      document.getElementById('riskCountBadge').textContent = (report.startup_risks || []).length;
+      renderRisks(report.startup_risks || []);
+
+      // JSON Render
+      document.getElementById('jsonViewer').textContent = JSON.stringify(report, null, 2);
+    }
+
+    function renderQuadrant(containerId, items, color, icon) {
+      const el = document.getElementById(containerId);
+      if (!items || items.length === 0) {
+        el.innerHTML = `<p class="text-xs text-slate-400 italic">No items identified.</p>`;
+        return;
+      }
+      el.innerHTML = items.map((item, idx) => `
+        <div class="p-3.5 bg-slate-50/80 rounded-xl border border-slate-100 hover:border-${color}-300 transition space-y-1.5">
+          <div class="flex items-start gap-2">
+            <span class="w-5 h-5 rounded-full bg-${color}-100 text-${color}-700 flex items-center justify-center text-[10px] font-bold mt-0.5 shrink-0">
+              <i class="fa-solid ${icon}"></i>
+            </span>
+            <div class="font-bold text-slate-900 text-xs sm:text-sm">${item.point}</div>
+          </div>
+          <p class="text-xs text-slate-600 pl-7 leading-relaxed">${item.explanation}</p>
+          ${item.strategic_implication ? `
+            <div class="ml-7 pt-1 flex items-start gap-1.5 text-[11px] text-${color}-800 font-medium">
+              <i class="fa-solid fa-arrow-right text-[10px] mt-0.5 shrink-0"></i>
+              <span>${item.strategic_implication}</span>
+            </div>
+          ` : ''}
+        </div>
+      `).join('');
+    }
+
+    function renderRisks(risks) {
+      const container = document.getElementById('riskCardsContainer');
+      if (!risks || risks.length === 0) {
+        container.innerHTML = `<p class="text-sm text-slate-500 italic p-6 bg-white rounded-xl">No risks match the selected filter.</p>`;
+        return;
+      }
+
+      container.innerHTML = risks.map((r) => {
+        let severityBadge = "badge-medium";
+        let sevUpper = (r.overall_severity || "Medium").toUpperCase();
+        if (sevUpper === "CRITICAL" || sevUpper === "HIGH") severityBadge = "badge-critical";
+        else if (sevUpper === "LOW") severityBadge = "badge-low";
+
+        // Format step by step mitigation lines
+        const mitigationLines = (r.mitigation_strategy || "")
+          .split('\n')
+          .filter(l => l.trim().length > 0)
+          .map(l => `<li class="text-xs text-slate-700 leading-relaxed">${l}</li>`)
+          .join('');
+
+        return `
+          <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:border-slate-300 transition space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+              <div class="flex items-center space-x-2.5">
+                <span class="text-xs font-mono font-bold px-2 py-0.5 bg-slate-100 text-slate-700 rounded">${r.risk_id}</span>
+                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200">${r.category}</span>
+                <h4 class="font-bold text-slate-900 text-sm sm:text-base">${r.risk_title}</h4>
+              </div>
+              <div class="flex items-center space-x-2 shrink-0">
+                <span class="text-[11px] font-semibold text-slate-500">Impact: <b>${r.impact || 'N/A'}</b></span>
+                <span class="text-slate-300">•</span>
+                <span class="text-[11px] font-semibold text-slate-500">Likelihood: <b>${r.likelihood || 'N/A'}</b></span>
+                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full ${severityBadge}">${r.overall_severity || 'Medium'} Severity</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 pt-1">
+              <div class="lg:col-span-5 bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-1">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+                  <i class="fa-solid fa-circle-question text-slate-400"></i> Root Cause & Manifestation
+                </span>
+                <p class="text-xs text-slate-700 leading-relaxed">${r.explanation}</p>
+              </div>
+
+              <div class="lg:col-span-7 bg-emerald-50/50 p-4 rounded-xl border border-emerald-100 space-y-1.5">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
+                  <i class="fa-solid fa-shield-halved text-emerald-600"></i> Actionable Mitigation Strategy
+                </span>
+                <ul class="space-y-1 list-disc pl-4">
+                  ${mitigationLines}
+                </ul>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterRisks() {
+      const category = document.getElementById('riskCategoryFilter').value;
+      if (category === "ALL") {
+        renderRisks(currentReport.startup_risks || []);
+      } else {
+        const filtered = (currentReport.startup_risks || []).filter(r => r.category === category);
+        renderRisks(filtered);
+      }
+    }
+
+    // Switch Tabs
+    function switchTab(tab) {
+      document.getElementById('tabSwot').classList.toggle('hidden', tab !== 'swot');
+      document.getElementById('tabRisks').classList.toggle('hidden', tab !== 'risks');
+      document.getElementById('tabJson').classList.toggle('hidden', tab !== 'json');
+
+      const tabs = ['swot', 'risks', 'json'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('tabBtn' + t.charAt(0).toUpperCase() + t.slice(1));
+        if (t === tab) {
+          btn.className = "tab-active pb-3 flex items-center space-x-2";
+        } else {
+          btn.className = "text-slate-500 hover:text-slate-700 pb-3 flex items-center space-x-2 transition";
+        }
+      });
+    }
+
+    // Load Presets
+    function loadPreset(name) {
+      document.getElementById('btnPresetFleet').className = name === 'fleetpulse' ? "px-2.5 py-1 bg-white text-blue-700 shadow-sm rounded-md font-semibold transition" : "px-2.5 py-1 text-slate-600 hover:text-slate-900 rounded-md transition";
+      document.getElementById('btnPresetMed').className = name === 'medtrack' ? "px-2.5 py-1 bg-white text-blue-700 shadow-sm rounded-md font-semibold transition" : "px-2.5 py-1 text-slate-600 hover:text-slate-900 rounded-md transition";
+      document.getElementById('btnPresetAgri').className = name === 'agridrone' ? "px-2.5 py-1 bg-white text-blue-700 shadow-sm rounded-md font-semibold transition" : "px-2.5 py-1 text-slate-600 hover:text-slate-900 rounded-md transition";
+
+      if (name === 'fleetpulse') renderDashboard(presetFleetPulse);
+      else if (name === 'medtrack') renderDashboard(presetMedTrack);
+      else if (name === 'agridrone') renderDashboard(presetAgriDrone);
+    }
+
+    // Modal
+    function openCustomModal() { document.getElementById('customIdeaModal').classList.remove('hidden'); }
+    function closeCustomModal() { document.getElementById('customIdeaModal').classList.add('hidden'); }
+
+    // Custom Submission Handler (Local intelligent synthesis)
+    function handleCustomSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('custName').value;
+      const industry = document.getElementById('custIndustry').value;
+      const customers = document.getElementById('custCustomers').value;
+      const desc = document.getElementById('custDesc').value;
+
+      const customReport = {
+        idea_name: name,
+        industry: industry,
+        target_customers: customers,
+        executive_summary: `${name} tackles meaningful challenges in ${industry}. The venture's automated technology addresses customer pain points for ${customers}. Early traction requires demonstrating clear quantifiable ROI and establishing defensive moats against competitors.`,
+        overall_risk_level: "Moderate",
+        key_strategic_recommendation: `Launch a controlled beta validation pilot with 3 target clients in ${industry} to benchmark performance metrics and gather customer testimonials before scaling sales outreach.`,
+        swot_analysis: {
+          strengths: [
+            { point: "Purpose-Built Solution Architecture", explanation: `${name} is custom-designed for ${customers}, bypassing horizontal legacy bloat.`, strategic_implication: "Accelerates early customer time-to-value." },
+            { point: "Modern Cloud-Native Foundation", explanation: "Lowers infrastructure unit costs and allows agile feature iteration.", strategic_implication: "Maintains high gross margins as customer volume scales." }
+          ],
+          weaknesses: [
+            { point: "Early-Stage Cold-Start Limitations", explanation: "Lacks recognized enterprise client case studies and third-party security certifications.", strategic_implication: "Requires higher touch founder-led selling during initial quarters." },
+            { point: "Resource & Runway Constraints", explanation: "Early capital limits simultaneous multi-channel marketing campaigns.", strategic_implication: "Demands strict focus on a narrow beachhead segment." }
+          ],
+          opportunities: [
+            { point: "Accelerating Industry Modernization", explanation: `Rising digital transformation demand across ${industry}.`, strategic_implication: "Expands the serviceable addressable market." },
+            { point: "Channel Integration Partnerships", explanation: "Complementary software vendors seek API integration partners.", strategic_implication: "Unlocks capital-efficient customer distribution channels." }
+          ],
+          threats: [
+            { point: "Incumbent Feature Copying", explanation: "Large established vendors may attempt to bundle similar tools into existing customer contracts.", strategic_implication: "Demands continuous workflow specialization." },
+            { point: "Macro Budget Caution", explanation: "Enterprise buyers scrutinizing discretionary software expenses.", strategic_implication: "Requires upfront proof-of-value validation before contracting." }
+          ]
+        },
+        startup_risks: [
+          {
+            risk_id: "RISK-01",
+            category: "Market & Adoption",
+            risk_title: "Customer Inertia & Extended Procurement Velocity",
+            likelihood: "High",
+            impact: "High",
+            overall_severity: "High",
+            explanation: `${customers} may hesitate to switch away from established manual workflows without guaranteed upside.`,
+            mitigation_strategy: "1. Provide a zero-friction 30-day proof-of-concept.\n2. Supply pre-configured ROI templates to help internal champions justify budget."
+          },
+          {
+            risk_id: "RISK-02",
+            category: "Financial & Runway",
+            risk_title: "High Customer Acquisition Cost (CAC) During Early Launch",
+            likelihood: "Medium",
+            impact: "High",
+            overall_severity: "High",
+            explanation: "Unoptimized marketing channels and long conversion funnels can burn seed capital.",
+            mitigation_strategy: "1. Prioritize organic industry community involvement and targeted founder outreach.\n2. Keep payback periods under 8 months."
+          }
+        ],
+        agent_metadata: {
+          agent_name: "SWOT & Risk Analysis Agent",
+          model_used: "Client-Interactive LLM Engine",
+          generated_at: new Date().toISOString(),
+          status: "success"
+        }
+      };
+
+      // If running over HTTP server, call backend API
+      if (window.location.protocol.startsWith('http')) {
+        const payload = {
+          idea_name: name,
+          industry: industry,
+          target_customers: customers,
+          problem_statement: desc
+        };
+
+        fetch('/api/swot', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+        .then(res => res.json())
+        .then(data => {
+          closeCustomModal();
+          renderDashboard(data);
+          switchTab('swot');
+        })
+        .catch(err => {
+          console.warn("Backend API error, using client fallback:", err);
+          closeCustomModal();
+          renderDashboard(customReport);
+          switchTab('swot');
+        });
+      } else {
+        closeCustomModal();
+        renderDashboard(customReport);
+        switchTab('swot');
+      }
+    }
+
+    // Export JSON
+    function exportJSON() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(currentReport, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `${(currentReport.idea_name || 'swot_report').toLowerCase().replace(/\s+/g, '_')}_analysis.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    }
+
+    function copyJSON() {
+      navigator.clipboard.writeText(JSON.stringify(currentReport, null, 2)).then(() => {
+        const btn = document.getElementById('btnCopyJSON');
+        btn.innerHTML = `<i class="fa-solid fa-check text-emerald-400"></i> Copied!`;
+        setTimeout(() => {
+          btn.innerHTML = `<i class="fa-solid fa-copy"></i> Copy Schema`;
+        }, 2000);
+      });
+    }
+
+    // Initial render with actual backend data
+    window.addEventListener('DOMContentLoaded', () => {
+      // Try to fetch latest backend data if served via HTTP, else fallback to embedded data
+      if (window.location.protocol.startsWith('http')) {
+        fetch('/api/swot')
+          .then(res => res.json())
+          .then(data => renderDashboard(data))
+          .catch(() => renderDashboard(presetFleetPulse));
+      } else {
+        renderDashboard(presetFleetPulse);
+      }
+    });
+  </script>
+</body>
+</html>

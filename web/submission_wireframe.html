@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Startup Idea Validator - Idea Submission Wireframe</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .gradient-header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 min-h-screen text-slate-800 font-sans">
+
+  <!-- Top Navbar -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl gradient-header flex items-center justify-center text-white font-bold text-lg shadow-md">
+          <i class="fa-solid fa-brain"></i>
+        </div>
+        <div>
+          <h1 class="font-extrabold text-slate-900 leading-none text-lg">AI Startup Idea Validator</h1>
+          <span class="text-xs text-blue-600 font-semibold tracking-wide uppercase">Multi-Agent Intelligence Platform</span>
+        </div>
+      </div>
+      <div class="flex items-center space-x-3 text-sm">
+        <a href="index.html" class="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold transition text-xs flex items-center gap-1.5 shadow-sm">
+          <i class="fa-solid fa-rocket"></i> Launch Full Platform
+        </a>
+        <a href="swot_dashboard.html" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg font-medium transition text-xs flex items-center gap-1.5">
+          <i class="fa-solid fa-chart-pie text-blue-600"></i>
+          <span>View SWOT Dashboard</span>
+        </a>
+        <button id="btnLoadSample" class="px-3 py-1.5 border border-blue-600 text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition text-xs">
+          <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> Fill Sample (FleetPulse EV)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <div class="max-w-6xl mx-auto px-4 pt-8 pb-4">
+    <div class="text-center max-w-3xl mx-auto mb-8">
+      <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight sm:text-4xl">
+        Validate Your Startup in Seconds with <span class="text-blue-600">6 Autonomous AI Agents</span>
+      </h2>
+      <p class="mt-3 text-base text-slate-600">
+        Enter a 2–3 line pitch. Our multi-agent swarm will query live market data, benchmark existing competitors, compute SWOT risks, and recommend a lean MVP roadmap.
+      </p>
+    </div>
+
+    <!-- Main Container -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Submission Form (7 Cols) -->
+      <div class="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
+          <h3 class="font-bold text-lg text-slate-900 flex items-center">
+            <i class="fa-solid fa-rocket text-blue-600 mr-2"></i> Startup Concept Submission
+          </h3>
+          <span class="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded">Milestone 1 Intake</span>
+        </div>
+
+        <form id="submissionForm" class="space-y-5">
+          <!-- Startup Name -->
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1" for="startupName">
+              Startup Name / Working Title <span class="text-red-500">*</span>
+            </label>
+            <input type="text" id="startupName" required placeholder="e.g. FleetPulse EV" 
+                   class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm outline-none transition">
+          </div>
+
+          <!-- Description -->
+          <div>
+            <div class="flex justify-between items-center mb-1">
+              <label class="block text-sm font-semibold text-slate-700" for="ideaDescription">
+                Core Idea & Problem Description <span class="text-red-500">*</span>
+              </label>
+              <span class="text-xs text-slate-400">2-4 sentences recommended</span>
+            </div>
+            <textarea id="ideaDescription" rows="4" required
+                      placeholder="Describe what problem you are solving, how your solution works, and why existing solutions fall short..."
+                      class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm outline-none transition"></textarea>
+          </div>
+
+          <!-- Target Customers -->
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-1" for="targetCustomers">
+              Target Customer Persona & Market Segment <span class="text-red-500">*</span>
+            </label>
+            <input type="text" id="targetCustomers" required
+                   placeholder="e.g. Fleet operations managers at regional logistics companies with 15-250 electric vans"
+                   class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm outline-none transition">
+          </div>
+
+          <!-- Industry Dropdown & Geography -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1" for="industrySelect">
+                Industry Vertical <span class="text-red-500">*</span>
+              </label>
+              <select id="industrySelect" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm outline-none bg-white">
+                <option value="Logistics & Supply Chain">Logistics & Supply Chain</option>
+                <option value="CleanTech & Energy">CleanTech & Energy</option>
+                <option value="Healthcare & BioTech">Healthcare & BioTech</option>
+                <option value="FinTech & InsurTech">FinTech & InsurTech</option>
+                <option value="EdTech">EdTech</option>
+                <option value="B2B Enterprise SaaS">B2B Enterprise SaaS</option>
+                <option value="E-Commerce & Retail">E-Commerce & Retail</option>
+                <option value="Consumer Tech">Consumer Tech</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1" for="geography">
+                Primary Geography
+              </label>
+              <select id="geography" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm outline-none bg-white">
+                <option value="North America & Europe">North America & Europe</option>
+                <option value="Global">Global</option>
+                <option value="Asia Pacific / India">Asia Pacific / India</option>
+                <option value="Latin America">Latin America</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Business Model & Competitors -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1" for="bizModel">
+                Monetization Model (Optional)
+              </label>
+              <input type="text" id="bizModel" placeholder="e.g. B2B SaaS ($50/vehicle/mo)"
+                     class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm outline-none">
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-slate-700 mb-1" for="competitors">
+                Known Competitors (Optional)
+              </label>
+              <input type="text" id="competitors" placeholder="e.g. Geotab, Samsara, OptimoRoute"
+                     class="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm outline-none">
+            </div>
+          </div>
+
+          <!-- Live Search Switch -->
+          <div class="p-3 bg-blue-50 border border-blue-100 rounded-lg flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <i class="fa-solid fa-satellite-dish text-blue-600"></i>
+              <span class="text-xs text-blue-900 font-medium">Enable Live Tavily Web Search API Verification</span>
+            </div>
+            <input type="checkbox" id="liveSearchToggle" checked class="w-4 h-4 text-blue-600 rounded">
+          </div>
+
+          <!-- Action Button -->
+          <button type="submit" id="btnSubmit" 
+                  class="w-full py-3 px-4 gradient-header text-white font-bold rounded-xl shadow-lg hover:opacity-95 transition flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-sparkles"></i>
+            <span>Transform & Launch Multi-Agent Validation</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Column: Agent Workflow & Structured Output Preview (5 Cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        
+        <!-- Pipeline Visualizer -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+          <h4 class="font-bold text-slate-900 text-sm mb-4 flex items-center">
+            <i class="fa-solid fa-diagram-project text-blue-600 mr-2"></i> Agent Swarm Pipeline
+          </h4>
+          <div class="space-y-3">
+            <div class="flex items-center p-2 rounded-lg bg-blue-50 border border-blue-200 text-xs">
+              <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold mr-3 text-xs">1</span>
+              <div>
+                <p class="font-semibold text-blue-900">Idea Structuring Agent (LLM)</p>
+                <p class="text-blue-700 text-[11px]">Normalizes freeform text into Pydantic JSON</p>
+              </div>
+            </div>
+            <div class="flex items-center p-2 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-600">
+              <span class="w-6 h-6 rounded-full bg-slate-300 text-slate-700 flex items-center justify-center font-bold mr-3 text-xs">2</span>
+              <div>
+                <p class="font-semibold text-slate-800">Web Search Agent (Tavily)</p>
+                <p class="text-[11px] text-slate-500">Live competitor & market report retrieval</p>
+              </div>
+            </div>
+            <div class="flex items-center p-2 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-600">
+              <span class="w-6 h-6 rounded-full bg-slate-300 text-slate-700 flex items-center justify-center font-bold mr-3 text-xs">3</span>
+              <div>
+                <p class="font-semibold text-slate-800">Market & Competitor Agents</p>
+                <p class="text-[11px] text-slate-500">TAM/SAM/SOM + Competitive Matrix</p>
+              </div>
+            </div>
+            <div class="flex items-center p-2 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-600">
+              <span class="w-6 h-6 rounded-full bg-slate-300 text-slate-700 flex items-center justify-center font-bold mr-3 text-xs">4</span>
+              <div>
+                <p class="font-semibold text-slate-800">SWOT & MVP Agents</p>
+                <p class="text-[11px] text-slate-500">Risk mitigation & MoSCoW roadmap</p>
+              </div>
+            </div>
+            <div class="flex items-center p-2 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-600">
+              <span class="w-6 h-6 rounded-full bg-slate-300 text-slate-700 flex items-center justify-center font-bold mr-3 text-xs">5</span>
+              <div>
+                <p class="font-semibold text-slate-800">Report Generation Agent</p>
+                <p class="text-[11px] text-slate-500">Executive Dossier & Feasibility Score</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Structured JSON Live Preview Box -->
+        <div class="bg-slate-900 text-emerald-400 rounded-2xl p-5 shadow-lg border border-slate-800">
+          <div class="flex items-center justify-between mb-3 border-b border-slate-800 pb-2">
+            <span class="text-xs font-mono text-slate-300 flex items-center">
+              <i class="fa-solid fa-code mr-1.5 text-blue-400"></i> Structured Schema Preview
+            </span>
+            <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono">Pydantic Model</span>
+          </div>
+          <pre id="jsonPreview" class="text-xs font-mono overflow-x-auto max-h-72 text-slate-300 whitespace-pre-wrap">
+// Submit or click "Fill Sample" to view the converted JSON schema ready for multi-agent execution...
+          </pre>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const sampleData = {
+      startupName: "FleetPulse EV",
+      ideaDescription: "AI-powered dynamic routing, battery state-of-health management, and smart charging scheduling platform designed for mid-sized commercial delivery fleets transitioning from diesel to electric vehicles. Solves unpredictable battery drain and high peak-electricity charging tariffs.",
+      targetCustomers: "Fleet Operations Managers and Logistics Directors at mid-sized delivery carriers operating 15 to 250 electric vans.",
+      industrySelect: "Logistics & Supply Chain",
+      geography: "North America & Europe",
+      bizModel: "B2B SaaS ($50/vehicle/month)",
+      competitors: "Geotab, Samsara, OptimoRoute, Ampcontrol"
+    };
+
+    function updatePreview(data) {
+      const structured = {
+        idea_name: data.startupName,
+        problem_statement: data.ideaDescription,
+        proposed_solution: "An automated, intelligent platform providing " + data.industrySelect + " dynamic routing, battery state-of-health management, and smart charging scheduling.",
+        target_customers: data.targetCustomers,
+        industry: data.industrySelect,
+        key_features: [
+          "Dynamic routing and schedule optimization engine",
+          "Battery health telemetry and real-time degradation monitor",
+          "Automated off-peak charging scheduler with utility tariff integration",
+          "Interactive operations dashboard and vehicle analytics"
+        ],
+        extraction_source: "LLM (Task 2 Schema)",
+        status: "success"
+      };
+      document.getElementById('jsonPreview').textContent = JSON.stringify(structured, null, 2);
+    }
+
+    document.getElementById('btnLoadSample').addEventListener('click', () => {
+      document.getElementById('startupName').value = sampleData.startupName;
+      document.getElementById('ideaDescription').value = sampleData.ideaDescription;
+      document.getElementById('targetCustomers').value = sampleData.targetCustomers;
+      document.getElementById('industrySelect').value = sampleData.industrySelect;
+      document.getElementById('geography').value = sampleData.geography;
+      document.getElementById('bizModel').value = sampleData.bizModel;
+      document.getElementById('competitors').value = sampleData.competitors;
+      updatePreview(sampleData);
+    });
+
+    document.getElementById('submissionForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const desc = document.getElementById('ideaDescription').value.trim();
+      const words = desc.split(/\s+/).filter(Boolean);
+      const lines = desc.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+      if (!((lines.length >= 2 && desc.length >= 45 && words.length >= 8) || (desc.length >= 60 && words.length >= 10))) {
+        alert("Idea description must be at least 2–3 lines (minimum 60 characters & 10+ words) detailing the problem and proposed solution.");
+        document.getElementById('ideaDescription').focus();
+        return;
+      }
+
+      const currentData = {
+        startupName: document.getElementById('startupName').value,
+        ideaDescription: desc,
+        targetCustomers: document.getElementById('targetCustomers').value,
+        industrySelect: document.getElementById('industrySelect').value,
+        geography: document.getElementById('geography').value,
+        bizModel: document.getElementById('bizModel').value,
+        competitors: document.getElementById('competitors').value
+      };
+      updatePreview(currentData);
+      alert('Idea successfully structured! JSON payload generated for Multi-Agent Swarm.');
+    });
+  </script>
+</body>
+</html>

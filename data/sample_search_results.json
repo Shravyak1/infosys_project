@@ -1,0 +1,31 @@
+{
+  "query": "commercial EV fleet management route optimization competitors",
+  "mode": "DEMO_VERIFIED",
+  "answer": "Commercial EV fleet management and route optimization is rapidly expanding. Primary market competitors include Samsara, Geotab, OptimoRoute, and Ampcontrol. While telematics giants excel in GPS tracking and vehicle maintenance, mid-sized fleets face significant gaps in dynamic routing that balances battery state-of-health, cold-weather range drops, and utility peak-demand charging tariffs.",
+  "results": [
+    {
+      "title": "Commercial EV Fleet Management Market Size & Forecast (2025-2032)",
+      "url": "https://www.marketsandmarkets.com/Market-Reports/ev-fleet-management-market.html",
+      "score": 0.96,
+      "content": "The global EV fleet management market was valued at $3.1 Billion in 2024 and is projected to surpass $12.8 Billion by 2030, growing at a CAGR of 26.7%. Growth is accelerated by corporate ESG mandates, lower total cost of ownership (TCO), and municipal zero-emission zones."
+    },
+    {
+      "title": "Samsara vs. Geotab: EV Telematics & Battery Health Comparison",
+      "url": "https://www.fleetowner.com/technology/telematics/samsara-geotab-ev-comparison",
+      "score": 0.91,
+      "content": "Both Samsara and Geotab offer EV suitability assessments and state-of-charge tracking. However, neither provides integrated real-time dynamic route re-calculation based on elevation gain and cargo payload weight for electric parcel vans."
+    },
+    {
+      "title": "Mitigating Utility Peak Demand Charges for Commercial EV Depots",
+      "url": "https://www.cleanenergyworks.org/ev-depot-demand-charges-study",
+      "score": 0.88,
+      "content": "Simultaneous charging of 20+ delivery vans can trigger thousands of dollars in utility demand penalties. Smart charging management software that schedules charging during off-peak night hours reduces electricity costs by an average of 24% to 35%."
+    },
+    {
+      "title": "OptimoRoute & Circuit: Last-Mile Delivery Routing Software Review",
+      "url": "https://www.logisticsmanagement.com/software-reviews/last-mile-route-optimization",
+      "score": 0.84,
+      "content": "OptimoRoute delivers strong dispatch planning and multi-stop time windows for internal combustion fleets, but currently lacks EV-specific battery degradation telemetry and charger queue reservation integration."
+    }
+  ]
+}

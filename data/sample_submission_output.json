@@ -1,0 +1,15 @@
+{
+  "idea_name": "FleetPulse EV",
+  "problem_statement": "AI-powered dynamic routing, battery state-of-health management, and smart charging scheduling platform designed for mid-sized commercial delivery fleets transitioning from diesel to electric vehicles. Solves unpredictable battery drain and high peak-electricity charging tariffs.",
+  "proposed_solution": "An automated, intelligent platform providing Logistics & CleanTech capabilities for Fleet operations managers at regional logistics companies with 15 to 250 electric delivery vans.",
+  "target_customers": "Fleet operations managers at regional logistics companies with 15 to 250 electric delivery vans",
+  "industry": "Logistics & CleanTech",
+  "key_features": [
+    "Dynamic routing and schedule optimization engine",
+    "Battery health telemetry and real-time degradation monitor",
+    "Automated off-peak charging scheduler with utility tariff integration",
+    "Interactive operations dashboard and vehicle analytics"
+  ],
+  "extraction_source": "FALLBACK_RULE_BASED",
+  "status": "partial (Fallback triggered: No valid GEMINI_API_KEY or OPENAI_API_KEY found in .env)"
+}

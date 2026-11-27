@@ -1,0 +1,17 @@
+{
+  "session_id": "test-save-session-001",
+  "created_at": "2026-11-25T10:48:29.351335Z",
+  "updated_at": "2026-11-25T10:48:29.351855Z",
+  "raw_input": {
+    "startup_name": "FleetPulse EV",
+    "description": "AI dynamic route optimization, battery state-of-health management, and smart charging scheduling for commercial fleets.",
+    "target_customers": "Commercial delivery fleets (15-250 electric vans)",
+    "industry": "Logistics & CleanTech",
+    "geography": "Global",
+    "monetization_hypothesis": null,
+    "known_competitors": null
+  },
+  "status": "completed",
+  "report": null,
+  "chat_history": []
+}

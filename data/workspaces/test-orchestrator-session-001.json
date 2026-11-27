@@ -1,0 +1,736 @@
+{
+  "session_id": "test-orchestrator-session-001",
+  "created_at": "2026-11-25T10:48:29.416861Z",
+  "updated_at": "2026-11-25T10:48:29.417632Z",
+  "raw_input": {
+    "startup_name": "MedTrack AI",
+    "description": "Autonomous RFID smart bins for hospital pharmacies preventing drug stockouts and medication expiration waste.",
+    "target_customers": "Hospital pharmacy directors in 200-800 bed hospitals",
+    "industry": "Healthcare & Enterprise SaaS",
+    "geography": "Global",
+    "monetization_hypothesis": null,
+    "known_competitors": null
+  },
+  "status": "completed",
+  "report": {
+    "session_id": "test-orchestrator-session-001",
+    "idea_name": "MedTrack AI",
+    "tagline": "Smart mobile app that tracks grocery expiration dates and suggests recipes from ingredients in your fridge.",
+    "verdict": "PROCEED (Green Light)",
+    "feasibility_score": 82,
+    "pillar_scores": [
+      {
+        "pillar_name": "Market Opportunity & Demand",
+        "score": 90,
+        "weight_percentage": 25,
+        "rationale": "Market readiness evaluated at 9/10 with strong industry CAGR (18.4% (2025-2032)) and acute buyer urgency."
+      },
+      {
+        "pillar_name": "Competitive Defensibility & Moat",
+        "score": 88,
+        "weight_percentage": 25,
+        "rationale": "Defensibility rated as High. Differentiated by clear whitespace: 'The intersection of zero-effort receipt photo ingestion and expiration-prioritiz...'"
+      },
+      {
+        "pillar_name": "Technical Feasibility & Execution",
+        "score": 78,
+        "weight_percentage": 25,
+        "rationale": "Overall risk evaluated as Moderate. Concrete mitigations defined across 4 identified failure modes."
+      },
+      {
+        "pillar_name": "Business Model & Unit Economics",
+        "score": 70,
+        "weight_percentage": 25,
+        "rationale": "Solid monetization model with clear tiered pricing (Free Forever ($0)). Target LTV:CAC > 4:1 with an average payback period under 3 months based on $50 annual customer value.."
+      }
+    ],
+    "executive_summary": "MedTrack AI demonstrates a compelling venture validation score of 82/100 with an unambiguous recommendation to PROCEED (Green Light). The startup addresses an acute pain point in Healthcare & Enterprise SaaS: Autonomous RFID smart bins for hospital pharmacies preventing drug stockouts and medication expiration waste.... With a serviceable addressable market estimated at $3.4 Billion (North America & Western Europe Urban Households) expanding at 18.4% (2025-2032), the venture possesses favorable macroeconomic timing.\n\nDefensibility is anchored in its Unique Value Proposition: 'The effortless AI kitchen assistant that saves households $1,500 a year by turning expiring groceries into delicious 15-minute meals with a single receipt photo.'. However, founders must actively manage moderate-tier execution risks, notably: User Habit Churn After Initial Week 1 Novelty Wears Off. The prioritized 8-week MVP roadmap outlines a capital-efficient path to de-risk the core value hypothesis without unnecessary feature bloat.\n\nThe recommended Go-To-Market motion focuses on founder-led outbound and strategic co-selling channels targeting Sarah - Busy Urban Working Professional, with projected CAC payback within 6 to 8 months.",
+    "top_strengths": [
+      "Zero-Friction Receipt Photo Ingestion (Instant OCR)",
+      "Perishable-First Dynamic Recipe Generation",
+      "Quantifiable Household Financial ROI ($1,500/Year)"
+    ],
+    "critical_risks": [
+      "User Habit Churn After Initial Week 1 Novelty Wears Off (High) - 1. Implement 1-tap lockscreen reminder notifications on Sunday evenings ('Snap your grocery receipt in 5 seconds').",
+      "Receipt OCR Item Name Ambiguity & Perishable Expiration Variance (Medium) - 1. Implement a crowd-sourced grocery abbreviation normalization database.",
+      "Paid Customer Acquisition Cost (CAC) Exceeding Consumer Lifetime Value (LTV) (Critical) - 1. Rely primarily on organic viral short-form cooking videos (e.g. 'I made a gourmet dinner out of food about to expire')."
+    ],
+    "immediate_next_steps": [
+      "1. Conduct 5 customer discovery interviews with Sarah - Busy Urban Working Professional using the proposed customer persona pain points.",
+      "2. Launch pre-build validation experiment: '14-Day 'Fridge Cleanout' Challenge'.",
+      "3. Build interactive ROI calculator landing page highlighting: 'The effortless AI kitchen assistant that saves households $1,500 a year by turning expiring groceries into delicious 15-minute meals with a single receipt photo.'.",
+      "4. Initiate Sprint 1 technical setup (Weeks 1-2: Camera OCR & Receipt Parsing Engine) using recommended stack.",
+      "5. Secure 2 Letters of Intent (LOIs) from design partners under the Free (Basic Pantry) pricing structure."
+    ],
+    "generated_at": "2026-11-25T10:48:29.416861Z",
+    "structured_idea": {
+      "idea_name": "MedTrack AI",
+      "tagline": "Smart mobile app that tracks grocery expiration dates and suggests recipes from ingredients in your fridge.",
+      "problem_statement": "Autonomous RFID smart bins for hospital pharmacies preventing drug stockouts and medication expiration waste.",
+      "proposed_solution": "A specialized Healthcare & Enterprise SaaS platform that directly resolves this friction through intelligent automation and real-time operational optimization.",
+      "target_customers": "Hospital pharmacy directors in 200-800 bed hospitals",
+      "industry": "Healthcare & Enterprise SaaS",
+      "key_features": [
+        "Instant grocery receipt photo scanner with automated expiration date logging",
+        "Smart push notifications alerting users 48 hours before perishable food spoils",
+        "'What's in my fridge?' recipe generator matching meals to expiring ingredients",
+        "Automated grocery shopping list that tracks pantry depletion and household savings"
+      ],
+      "monetization_model": "Freemium ($4.99/month for Pro unlimited receipt scanning and custom meal plans)",
+      "search_keywords": [
+        "grocery tracking app",
+        "food waste reduction",
+        "recipe generator from fridge",
+        "smart kitchen assistant"
+      ],
+      "search_queries": [
+        "household grocery food waste reduction app market size 2025 2030",
+        "top smart pantry grocery expiration competitors SuperCook CozZo MyFridgeFood",
+        "consumer grocery food waste annual financial cost savings"
+      ],
+      "extraction_source": "FALLBACK_RULE_BASED",
+      "status": "partial (Fallback triggered: No valid GEMINI_API_KEY or OPENAI_API_KEY in .env)"
+    },
+    "web_intelligence": {
+      "query": "household grocery food waste reduction app market size 2025 2030",
+      "mode": "DEMONSTRATION_FALLBACK",
+      "ai_synthesis": "The household food waste and smart grocery management market is experiencing surging consumer demand, accelerated by grocery inflation and growing sustainability awareness. An estimated 30% to 40% of household food is wasted annually, costing the average family over $1,500 per year. While recipe platforms (SuperCook, BigOven) generate meals based on user-typed ingredients, and inventory apps (CozZo) track expiration dates, users suffer from tedious manual data entry. A massive opportunity exists for automated receipt photo scanning paired with smart meal recommendations.",
+      "market_results": [
+        {
+          "title": "Global Food Waste Management & Consumer Meal Planning Market 2025-2032",
+          "url": "https://www.grandviewresearch.com/industry-analysis/food-waste-management-market",
+          "snippet": "The global food waste management and smart kitchen apps market was valued at $38.4B in 2024 and is projected to reach $68.2B by 2032, expanding at a CAGR of 7.5%. Consumer mobile apps for grocery tracking are the fastest-growing sub-segment.",
+          "score": 0.96,
+          "category": "market"
+        },
+        {
+          "title": "USDA Economic Research Service: Food Waste in American Households",
+          "url": "https://www.usda.gov/foodwaste/faqs",
+          "snippet": "In the United States, food waste is estimated at between 30-40 percent of the food supply. For an average family of four, discarded perishable food corresponds to approximately $1,500 in wasted annual household income.",
+          "score": 0.94,
+          "category": "market"
+        }
+      ],
+      "competitor_results": [
+        {
+          "title": "SuperCook vs. MyFridgeFood: Recipe Generators by Ingredients Review",
+          "url": "https://www.thekitchn.com/recipe-generator-apps-review-supercook-myfridgefood",
+          "snippet": "SuperCook allows users to check off ingredients they own to find recipes. However, it lacks automatic expiration tracking and requires users to manually select dozens of pantry items from lists.",
+          "score": 0.92,
+          "category": "competitor"
+        },
+        {
+          "title": "CozZo Kitchen Inventory & Expiration Tracker App Benchmark",
+          "url": "https://cozzo.app/features/food-waste-prevention",
+          "snippet": "CozZo provides expiration date alerts and pantry inventory tracking ($4.99/mo). Its main drawback is friction in onboarding, as users must manually barcode-scan or type individual grocery items.",
+          "score": 0.9,
+          "category": "competitor"
+        }
+      ],
+      "regulatory_results": [
+        {
+          "title": "EPA & USDA National Food Waste Reduction Goals",
+          "url": "https://www.epa.gov/sustainable-management-food/food-waste-reduction-goals",
+          "snippet": "Federal initiatives promote technology solutions and standardized 'Best If Used By' date labeling to help consumers differentiate between food safety and food quality dates.",
+          "score": 0.91,
+          "category": "regulatory"
+        }
+      ],
+      "retrieved_at": "2026-11-25T10:48:29.414572Z"
+    },
+    "market_analysis": {
+      "industry_vertical": "Healthcare & Enterprise SaaS",
+      "market_size": {
+        "tam_value": "$12.8 Billion (Global Consumer FoodTech & Meal Planning Apps by 2030)",
+        "tam_rationale": "Estimated 280 Million smartphone households globally that actively track grocery spending \u00d7 $45 average annual app subscription spend.",
+        "sam_value": "$3.4 Billion (North America & Western Europe Urban Households)",
+        "sam_rationale": "75 Million urban households and young professionals seeking to cut grocery inflation and food waste.",
+        "som_value": "$145 Million (Years 3-5 Realistic Capture)",
+        "som_rationale": "Capturing 2.4 Million paid Pro subscribers (approx. 3.2% of SAM) at $4.99/month ($59.88/year)."
+      },
+      "cagr_growth_rate": "18.4% (2025-2032)",
+      "market_tailwinds": [
+        "Persistent post-pandemic grocery inflation making food waste reduction an immediate financial priority for households.",
+        "Rising Gen Z and millennial environmental consciousness around household carbon footprint and food waste.",
+        "Widespread consumer adoption of mobile camera OCR and mobile-first micro-subscriptions ($3-$5/mo)."
+      ],
+      "market_headwinds": [
+        "Friction in establishing habitual user routines to snap receipts after grocery shopping.",
+        "Competition from free, fragmented ad-supported cooking blogs and YouTube recipe videos."
+      ],
+      "target_customer_segments": [
+        "Busy Young Professionals and Dual-Income Couples without Kids",
+        "Budget-Conscious College Students and Shared Apartment Roommates",
+        "Eco-Conscious Urban Families Seeking Meal Planning Efficiency"
+      ],
+      "personas": [
+        {
+          "persona_name": "Sarah - Busy Urban Working Professional",
+          "archetype": "Single / Young Couple Apartment Dweller",
+          "firmographics": "28 years old, tech/marketing professional, cooks dinner 3-4 nights/week",
+          "acute_pain_points": [
+            "Frequently throws away $20\u2013$30 worth of forgotten spoiled produce and dairy every Sunday.",
+            "Experiences decision fatigue at 7:00 PM opening the fridge not knowing what to cook with random leftover items.",
+            "Lacks time to manually type out grocery lists or manually enter expiration dates into tracking spreadsheets."
+          ],
+          "budget_authority": "Direct Consumer Buyer (instant App Store / Google Play in-app purchase)",
+          "willingness_to_pay": "$4.99 / month or $39.99 / year (easily justified by saving >$50/month in groceries)",
+          "urgency_rating": "High (Painkiller)"
+        }
+      ],
+      "market_readiness_score": 9,
+      "why_now_rationale": "Smartphone computer vision and LLM multimodal vision APIs have reached near 100% accuracy on complex supermarket receipts, making completely automated, zero-typing pantry management possible for the first time.",
+      "agent_metadata": {
+        "agent_name": "Market Opportunity & Customer Segmentation Agent",
+        "model_used": "FALLBACK_RULE_BASED",
+        "generated_at": "2026-11-25T10:48:29.415280Z",
+        "status": "partial (No active LLM API key configured)"
+      }
+    },
+    "competitor_analysis": {
+      "idea_name": "MedTrack AI",
+      "direct_competitors": [
+        {
+          "name": "SuperCook",
+          "competitor_type": "Direct",
+          "core_offering": "Recipe generator search engine based on ingredients selected from a checklist.",
+          "pricing_model": "Free (Ad-supported) with $2.99/month Ad-free option",
+          "strengths": [
+            "Large database of over 11 million online recipes.",
+            "Strong organic brand awareness among home cooks."
+          ],
+          "weaknesses_and_gaps": [
+            "Requires tedious manual checking off of dozens of pantry ingredients.",
+            "Completely lacks expiration date tracking or food waste alerts.",
+            "No automatic receipt photo scanning capability."
+          ]
+        },
+        {
+          "name": "CozZo",
+          "competitor_type": "Direct",
+          "core_offering": "Home kitchen inventory, expiration date manager, and grocery shopping list.",
+          "pricing_model": "$4.99 / month or $29.99 / year subscription",
+          "strengths": [
+            "Clean food expiration timeline interface.",
+            "Good notification system for expiring pantry staples."
+          ],
+          "weaknesses_and_gaps": [
+            "High onboarding friction requiring barcode scanning or manual text entry item-by-item.",
+            "Basic recipe suggestions that do not adapt dynamically to perishable leftovers.",
+            "iOS-only with limited cross-platform Android presence."
+          ]
+        },
+        {
+          "name": "MyFridgeFood",
+          "competitor_type": "Direct",
+          "core_offering": "Simple website tool matching fridge ingredients to user-submitted recipes.",
+          "pricing_model": "Free (Display banner ads)",
+          "strengths": [
+            "Simple, zero-login web interface."
+          ],
+          "weaknesses_and_gaps": [
+            "Outdated 2010s user interface, zero mobile notifications, and no camera OCR."
+          ]
+        }
+      ],
+      "indirect_competitors": [
+        {
+          "name": "Paprika Recipe Manager",
+          "competitor_type": "Indirect",
+          "core_offering": "Digital recipe organizer, meal planner, and grocery list creator.",
+          "pricing_model": "$4.99 one-time app purchase",
+          "strengths": [
+            "Excellent recipe clipping from websites and offline storage."
+          ],
+          "weaknesses_and_gaps": [
+            "Zero AI intelligence and no expiration tracking; requires user to plan every meal manually."
+          ]
+        },
+        {
+          "name": "Pen & Paper / Post-it Notes on Fridge",
+          "competitor_type": "Legacy Substitute",
+          "core_offering": "Writing expiration dates or grocery needs on kitchen magnetic whiteboards.",
+          "pricing_model": "Free ($1,500/year in wasted discarded groceries)",
+          "strengths": [
+            "Familiar, zero battery requirement."
+          ],
+          "weaknesses_and_gaps": [
+            "Easily forgotten, does not suggest recipes, and inaccessible while at the supermarket."
+          ]
+        }
+      ],
+      "feature_comparison_matrix": [
+        {
+          "dimension_name": "Receipt Photo Automated Ingestion (Zero-Typing)",
+          "startup_capability": "Instant Camera OCR (Logs 25 items in 3 seconds)",
+          "competitor_a_capability": "None (Manual checkbox selection)",
+          "competitor_b_capability": "Barcode-by-barcode scan only",
+          "competitor_c_capability": "None (Manual typing only)"
+        },
+        {
+          "dimension_name": "Dynamic Expiration Alerts & Waste Countdown",
+          "startup_capability": "Automated (48hr & 24hr push warnings)",
+          "competitor_a_capability": "None (No expiration awareness)",
+          "competitor_b_capability": "Manual Entry Required",
+          "competitor_c_capability": "None"
+        },
+        {
+          "dimension_name": "Perishable-First AI Recipe Generation",
+          "startup_capability": "Prioritizes items closest to expiration",
+          "competitor_a_capability": "Generic recipe match (ignores expiry)",
+          "competitor_b_capability": "Basic static web links",
+          "competitor_c_capability": "Basic user-submitted recipes"
+        },
+        {
+          "dimension_name": "Household Financial Savings Tracker",
+          "startup_capability": "Visual '$ Saved This Month' dashboard",
+          "competitor_a_capability": "None",
+          "competitor_b_capability": "None",
+          "competitor_c_capability": "None"
+        },
+        {
+          "dimension_name": "User Onboarding Time per Grocery Trip",
+          "startup_capability": "< 10 seconds (Snap 1 receipt photo)",
+          "competitor_a_capability": "5 to 10 minutes checking boxes",
+          "competitor_b_capability": "3 to 5 minutes barcode scanning",
+          "competitor_c_capability": "N/A (Web tool)"
+        }
+      ],
+      "uncontested_white_space": "The intersection of zero-effort receipt photo ingestion and expiration-prioritized recipe generation: existing apps either make users manually check off ingredients (SuperCook) or barcode-scan each item (CozZo). SmartPantry AI eliminates all manual entry friction with a single receipt photo and immediately tells users what to cook before food goes bad.",
+      "unique_value_proposition": "The effortless AI kitchen assistant that saves households $1,500 a year by turning expiring groceries into delicious 15-minute meals with a single receipt photo.",
+      "defensibility_rating": "High",
+      "agent_metadata": {
+        "agent_name": "Competitor Discovery & Comparison Agent",
+        "model_used": "FALLBACK_RULE_BASED",
+        "generated_at": "2026-11-25T10:48:29.415280Z",
+        "status": "partial (No active LLM API key configured)"
+      }
+    },
+    "swot_and_risk": {
+      "idea_name": "MedTrack AI",
+      "industry": "Healthcare & Enterprise SaaS",
+      "executive_summary": "MedTrack AI targets a massive, universally relatable consumer pain point: the $1,500 in spoiled, forgotten groceries discarded by the average household every year. By combining effortless receipt photo scanning with smart expiration alerts and recipe generation, MedTrack AI provides an instant, quantifiable return on investment for everyday consumers.\n\nThe venture's primary execution hurdles lie in consumer habit retention and maintaining organic user acquisition without relying on expensive paid advertising. With a lean mobile MVP and viral food waste reduction content, MedTrack AI is exceptionally well-positioned to achieve rapid consumer adoption and profitable freemium unit economics.",
+      "swot_analysis": {
+        "strengths": [
+          {
+            "point": "Zero-Friction Receipt Photo Ingestion (Instant OCR)",
+            "explanation": "MedTrack AI removes the #1 barrier of kitchen management apps by turning a 1-second grocery receipt photo into a categorized digital pantry inventory with auto-estimated expiration dates.",
+            "strategic_implication": "Dramatically increases daily active retention compared to competitors that require manual typing."
+          },
+          {
+            "point": "Perishable-First Dynamic Recipe Generation",
+            "explanation": "Algorithmic engine prioritizes ingredients expiring within 48 hours, suggesting quick 15-minute meals that directly prevent food waste.",
+            "strategic_implication": "Creates immediate, tangible value every time a user saves an ingredient from the trash."
+          },
+          {
+            "point": "Quantifiable Household Financial ROI ($1,500/Year)",
+            "explanation": "The consumer value proposition is undeniable: saving just one carton of berries and a steak each month completely pays for the $4.99/month subscription 5x over.",
+            "strategic_implication": "Significantly lowers consumer purchase friction on iOS App Store and Google Play."
+          },
+          {
+            "point": "Zero Custom Hardware Requirement",
+            "explanation": "Runs entirely on existing consumer smartphone cameras without requiring expensive smart refrigerators or proprietary barcode scanners.",
+            "strategic_implication": "Enables frictionless viral consumer distribution with zero supply chain or manufacturing risk."
+          }
+        ],
+        "weaknesses": [
+          {
+            "point": "Reliance on User Scanning Habit Formation",
+            "explanation": "Users must remember to take a photo of their receipt after unpacking groceries; breaking this routine causes inventory data to become outdated.",
+            "strategic_implication": "Demands strong onboarding gamification and timely weekend grocery shopping reminder notifications."
+          },
+          {
+            "point": "Supermarket Receipt Layout & Abbreviation Variance",
+            "explanation": "Grocery store receipts often use obscure abbreviations (e.g. 'ORG BBY CHK 1LB') that can cause OCR parsing ambiguity.",
+            "strategic_implication": "Requires continuous tuning of fuzzy matching dictionaries and user-assisted one-tap corrections."
+          },
+          {
+            "point": "Early-Stage Cold Start Organic Social Traction",
+            "explanation": "Consumer mobile apps require substantial initial viral momentum and app store review volume to maintain low Customer Acquisition Cost (CAC).",
+            "strategic_implication": "Requires disciplined founder-led social video marketing (TikTok/Reels) to seed initial user base."
+          }
+        ],
+        "opportunities": [
+          {
+            "point": "Grocery Delivery API Integrations (Instacart, Walmart, Amazon Fresh)",
+            "explanation": "Partnering with digital grocery delivery services allows automated digital receipt import without users having to snap physical paper photos.",
+            "strategic_implication": "Transforms product into a completely passive, background pantry intelligence service."
+          },
+          {
+            "point": "Brand-Sponsored Smart Recipe Ingredient Placements",
+            "explanation": "Food brands (e.g. pasta sauce, olive oil makers) seek contextual placement in recipe suggestions, unlocking auxiliary B2B advertising revenue.",
+            "strategic_implication": "Enables dual consumer subscription plus high-margin CPG brand advertising revenue."
+          },
+          {
+            "point": "Household Sustainability & Carbon Reduction Incentives",
+            "explanation": "Municipalities and corporate wellness programs are actively funding employee consumer initiatives that cut household landfill methane waste.",
+            "strategic_implication": "Opens corporate wellness benefit B2B2C distribution channels."
+          }
+        ],
+        "threats": [
+          {
+            "point": "Big Tech Native Mobile Feature Bundling",
+            "explanation": "Apple or Google could add basic receipt scanning or kitchen expiration reminders into native Notes or Apple Reminders apps.",
+            "strategic_implication": "Demands maintaining superior culinary recipe intelligence and personalized taste profile moats."
+          },
+          {
+            "point": "Smart Refrigerator Manufacturer Native Software",
+            "explanation": "Samsung and LG are embedding interior cameras into luxury refrigerators that detect inventory automatically.",
+            "strategic_implication": "Positions SmartPantry AI as the accessible universal solution for the 95% of households with standard non-smart fridges."
+          },
+          {
+            "point": "Consumer Subscription Fatigue",
+            "explanation": "Consumers are increasingly vigilant about canceling non-essential $5 monthly app subscriptions.",
+            "strategic_implication": "Must continuously display visual '$ Saved This Month' metrics on the app homescreen to reinforce ROI."
+          }
+        ]
+      },
+      "startup_risks": [
+        {
+          "risk_id": "RISK-01",
+          "category": "Market & Adoption",
+          "risk_title": "User Habit Churn After Initial Week 1 Novelty Wears Off",
+          "likelihood": "High",
+          "impact": "High",
+          "overall_severity": "High",
+          "explanation": "Consumers frequently download habit-tracking apps enthusiastically but abandon them when manual logging feels like a chore after 2-3 weeks.",
+          "mitigation_strategy": "1. Implement 1-tap lockscreen reminder notifications on Sunday evenings ('Snap your grocery receipt in 5 seconds').\n2. Introduce gamified badges and visual '$ Saved This Month' milestones.\n3. Allow users to simply share digital email e-receipts directly into the app.",
+          "historical_precedent": "CozZo: Proved that requiring manual barcode scanning causes 80%+ churn after week 2. Mitigate with 1-second camera receipt OCR."
+        },
+        {
+          "risk_id": "RISK-02",
+          "category": "Technical Feasibility",
+          "risk_title": "Receipt OCR Item Name Ambiguity & Perishable Expiration Variance",
+          "likelihood": "Medium",
+          "impact": "Medium",
+          "overall_severity": "Medium",
+          "explanation": "Supermarket receipts use cryptic abbreviations and produce items often lack clear standardized shelf-life dates, risking inaccurate expiry warnings.",
+          "mitigation_strategy": "1. Implement a crowd-sourced grocery abbreviation normalization database.\n2. Apply conservative expiration estimates for perishables (berries: 4 days, milk: 7 days) with editable user overrides.\n3. Use multimodal LLM vision to extract both text and brand logos.",
+          "historical_precedent": "Juicero: Raised $120M on proprietary hardware before failing. Keep SmartPantry 100% mobile software without expensive fridge sensors."
+        },
+        {
+          "risk_id": "RISK-03",
+          "category": "Financial & Runway",
+          "risk_title": "Paid Customer Acquisition Cost (CAC) Exceeding Consumer Lifetime Value (LTV)",
+          "likelihood": "High",
+          "impact": "High",
+          "overall_severity": "Critical",
+          "explanation": "Spending $20+ on Meta or Google paid ads to acquire a $4.99/month subscriber will quickly deplete startup capital.",
+          "mitigation_strategy": "1. Rely primarily on organic viral short-form cooking videos (e.g. 'I made a gourmet dinner out of food about to expire').\n2. Implement a 'Give 1 Month, Get 1 Month Free' friend referral loop.\n3. Partner with food waste TikTok and Instagram creators on performance revenue-share.",
+          "historical_precedent": "Fast (Checkout): Burned $10M/month on paid ads with poor retention. Rely on organic viral TikTok/Reels recipe videos to keep CAC < $1."
+        },
+        {
+          "risk_id": "RISK-04",
+          "category": "Competitive Defensibility",
+          "risk_title": "Copycat AI Recipe Apps Launching with Lower Prices",
+          "likelihood": "Medium",
+          "impact": "Medium",
+          "overall_severity": "Medium",
+          "explanation": "Low technical barriers to connecting OpenAI APIs mean developers can easily deploy basic recipe generator apps.",
+          "mitigation_strategy": "1. Build the defensibility moat around household pantry inventory retention and personalized dietary preference graphs.\n2. Deliver seamless receipt OCR which generic recipe wrappers lack.\n3. Secure brand partnerships that provide exclusive discount coupons on grocery restocking.",
+          "historical_precedent": "SuperCook: Succeeded with 11M recipes but relies on tedious manual ingredient checklists. Outpace them with automated expiration alerts."
+        }
+      ],
+      "overall_risk_level": "Moderate",
+      "key_strategic_recommendation": "Launch a 2-week viral 'Zero Food Waste Challenge' with 50 beta test households. Track the exact dollar savings achieved per household and feature the top user transformations in short-form TikTok/Instagram videos to drive organic pre-launch app store waitlists.",
+      "historical_case_studies": [
+        {
+          "startup_name": "Jasper AI & Early AI Wrappers",
+          "sector": "Generative AI SaaS",
+          "outcome": "Failed",
+          "outcome_summary": "Achieved rapid $40M ARR in 2022, but saw valuations tumble and growth stall when OpenAI released native ChatGPT capabilities for free.",
+          "fatal_mistake_or_key_lesson": "Built a thin UI wrapper directly over external LLM APIs without proprietary data moats or deep operational workflow integrations.",
+          "warning_for_founder": "A basic LLM wrapper is easily commoditized. Defensibility comes from proprietary data integrations (like receipt OCR parsers, pantry expiration state graphs, and localized supermarket knowledge).",
+          "relevance_score": 1.0
+        },
+        {
+          "startup_name": "Geotab & Samsara",
+          "sector": "Connected Fleets & Telematics",
+          "outcome": "Succeeded",
+          "outcome_summary": "Samsara achieved $1B+ ARR and successful NYSE IPO; Geotab connects over 4 million commercial vehicles globally.",
+          "fatal_mistake_or_key_lesson": "Key Success Factor: Standardized plug-and-play OBD-II telematics, open cloud APIs, and focusing on direct quantifiable fuel and maintenance savings during customer trials.",
+          "warning_for_founder": "In enterprise fleet software, win deals by proving tangible cost reductions within a 30-day non-intrusive 'Shadow Mode' trial before requesting long-term enterprise commitments.",
+          "relevance_score": 0.97
+        },
+        {
+          "startup_name": "Better Place",
+          "sector": "CleanTech & EV Mobility",
+          "outcome": "Failed",
+          "outcome_summary": "Raised $850M; filed for bankruptcy in 2013 after attempting to deploy universal robotic battery-swapping stations across entire nations.",
+          "fatal_mistake_or_key_lesson": "Extreme CapEx trap: Automakers refused to standardize battery pack form factors, leaving Better Place with stranded, multi-million dollar robotic station assets.",
+          "warning_for_founder": "Always remain hardware-agnostic. In EV and fleet logistics, deliver intelligent software and telematics optimization rather than building proprietary physical charging hardware.",
+          "relevance_score": 0.82
+        }
+      ],
+      "agent_metadata": {
+        "agent_name": "SWOT & Risk Analysis Agent (RAG-Augmented)",
+        "model_used": "FALLBACK_RULE_BASED",
+        "generated_at": "2026-11-25T10:48:29.415808Z",
+        "status": "partial (Deterministic fallback triggered: No valid GEMINI_API_KEY or OPENAI_API_KEY set in .env)",
+        "features_analyzed_count": 4,
+        "risks_evaluated_count": 4,
+        "rag_cases_retrieved_count": 3
+      }
+    },
+    "mvp_recommendation": {
+      "idea_name": "MedTrack AI",
+      "core_value_hypothesis": "Everyday households will regularly scan their grocery receipt if the app automatically alerts them before food spoils and suggests quick, delicious meals that visibly save them at least $50 a month.",
+      "features": [
+        {
+          "feature_id": "FEAT-01",
+          "title": "1-Second Receipt Photo OCR Scanner",
+          "description": "Takes a photo of any grocery supermarket receipt and automatically extracts purchased items, categorizes them, and assigns default shelf-life expiration dates.",
+          "moscow_category": "Must-Have",
+          "complexity": "Medium",
+          "validation_goal": "Over 90% parsing accuracy with zero manual typing required by the user."
+        },
+        {
+          "feature_id": "FEAT-02",
+          "title": "Pantry Expiration Timeline & Push Alerts",
+          "description": "Visual digital pantry sorted by expiration proximity with automated push warnings 48h and 24h before perishable items spoil.",
+          "moscow_category": "Must-Have",
+          "complexity": "Low",
+          "validation_goal": "Over 70% of alerted users open the app to cook or freeze the expiring food item."
+        },
+        {
+          "feature_id": "FEAT-03",
+          "title": "'Cook It Before It Spoils' Recipe Generator",
+          "description": "AI recipe engine that generates quick 15-to-30 minute meals prioritizing ingredients expiring soonest in the user's fridge.",
+          "moscow_category": "Must-Have",
+          "complexity": "Medium",
+          "validation_goal": "Users cook at least 2 recommended recipes per week using leftover items."
+        },
+        {
+          "feature_id": "FEAT-04",
+          "title": "Household '$ Saved This Month' Financial Dashboard",
+          "description": "Tracks every saved ingredient and displays cumulative money saved and food waste avoided in dollars and pounds.",
+          "moscow_category": "Should-Have",
+          "complexity": "Low",
+          "validation_goal": "Direct visual proof of ROI driving freemium subscription conversion."
+        },
+        {
+          "feature_id": "FEAT-05",
+          "title": "Smart Grocery Replenishment Shopping List",
+          "description": "Auto-generates shopping checklists as pantry items run low, categorized by supermarket aisle.",
+          "moscow_category": "Should-Have",
+          "complexity": "Low",
+          "validation_goal": "Increases weekly app open frequency during grocery trips."
+        },
+        {
+          "feature_id": "FEAT-06",
+          "title": "Dietary Preference & Allergy Customizer",
+          "description": "Filters recipe suggestions based on vegetarian, vegan, gluten-free, keto, or nut allergy restrictions.",
+          "moscow_category": "Could-Have",
+          "complexity": "Low",
+          "validation_goal": "Expands addressability to specialized diet households."
+        },
+        {
+          "feature_id": "FEAT-07",
+          "title": "Smart Fridge Hardware Camera IoT Integration (Won't-Have)",
+          "description": "Proprietary refrigerator hardware cameras or barcode lasers. Strictly out of scope for mobile MVP to avoid manufacturing CapEx.",
+          "moscow_category": "Won't-Have (v1.0)",
+          "complexity": "High",
+          "validation_goal": "Prevent expensive hardware trap during software validation."
+        },
+        {
+          "feature_id": "FEAT-08",
+          "title": "Direct In-App Grocery Delivery Ordering (Won't-Have)",
+          "description": "Building full fulfillment grocery delivery integration. Deferred to v2.0 after proving core retention.",
+          "moscow_category": "Won't-Have (v1.0)",
+          "complexity": "High",
+          "validation_goal": "Focus solely on food waste elimination."
+        }
+      ],
+      "tech_stack": [
+        {
+          "layer": "Mobile App Frontend",
+          "recommended_tech": "React Native / Expo with Tailwind CSS",
+          "rationale": "Rapid cross-platform iOS and Android app release with camera and push notification support from a single codebase."
+        },
+        {
+          "layer": "Backend & OCR Services",
+          "recommended_tech": "Python 3.11 / FastAPI & Google Gemini 1.5 Flash Vision API",
+          "rationale": "High-accuracy, low-cost multimodal image parsing for diverse supermarket receipts with near-instant sub-second latency."
+        },
+        {
+          "layer": "Database & User Auth",
+          "recommended_tech": "PostgreSQL (Supabase) + Row-Level Security",
+          "rationale": "Scalable cloud database with built-in user authentication, instant photo storage, and real-time data sync."
+        },
+        {
+          "layer": "Cloud & Deployment",
+          "recommended_tech": "Render / AWS Lambda Serverless",
+          "rationale": "Low maintenance cost that scales automatically with user traffic surges."
+        },
+        {
+          "layer": "In-App Purchases & Analytics",
+          "recommended_tech": "RevenueCat + PostHog Analytics",
+          "rationale": "Seamless App Store and Google Play subscription management and user funnel tracking."
+        }
+      ],
+      "roadmap_sprints": [
+        {
+          "sprint_name": "Weeks 1-2: Camera OCR & Receipt Parsing Engine",
+          "deliverables": [
+            "Build mobile camera photo capture interface",
+            "Integrate Gemini Vision API receipt parser",
+            "Create grocery item shelf-life database"
+          ],
+          "exit_criteria": "Receipt photo reliably parses 20+ grocery items with correct expiration estimates in <3 seconds."
+        },
+        {
+          "sprint_name": "Weeks 3-4: Digital Pantry & Expiration Alerting",
+          "deliverables": [
+            "Develop visual pantry inventory grid",
+            "Implement local push notifications for expiring food",
+            "Add manual one-tap item edit controls"
+          ],
+          "exit_criteria": "User receives accurate 48h expiration notification for perishables."
+        },
+        {
+          "sprint_name": "Weeks 5-6: AI Recipe Generator & Savings Dashboard",
+          "deliverables": [
+            "Develop perishable-first recipe recommendation engine",
+            "Build '$ Saved This Month' visual tracker",
+            "Implement basic user profile and dietary preferences"
+          ],
+          "exit_criteria": "Recipe generator produces delicious, step-by-step meals matching at least 3 fridge ingredients."
+        },
+        {
+          "sprint_name": "Weeks 7-8: Beta Testing & App Store Launch",
+          "deliverables": [
+            "Onboard 50 beta testing households",
+            "Integrate RevenueCat $4.99/mo freemium paywall",
+            "Submit iOS App Store and Google Play builds"
+          ],
+          "exit_criteria": "Achieve >60% Day-14 user retention across beta cohort."
+        }
+      ],
+      "validation_experiments": [
+        {
+          "experiment_name": "14-Day 'Fridge Cleanout' Challenge",
+          "description": "Run a 14-day WhatsApp / Telegram pilot with 30 families where they text photos of receipts and expiring fridge items. Manually send them daily 15-minute dinner recipes using their leftover food.",
+          "success_kpi": "Over 80% of families report saving >$30 during the 2 weeks and express willingness to pay $4.99/month for the automated app."
+        },
+        {
+          "experiment_name": "TikTok / Instagram Recipe Smoke Test Video",
+          "description": "Post 3 short-form videos showing: 'Here is how I made a gourmet pasta dinner using 3 ingredients that were about to spoil in my fridge, saving $25'. Direct viewers to a mobile app waitlist landing page.",
+          "success_kpi": "Obtain >500 email waitlist signups with a landing page conversion rate >15%."
+        }
+      ],
+      "estimated_mvp_timeline": "6 to 8 weeks",
+      "agent_metadata": {
+        "agent_name": "MVP Feature Recommendation Agent",
+        "model_used": "FALLBACK_RULE_BASED",
+        "generated_at": "2026-11-25T10:48:29.416332Z",
+        "status": "partial (No active LLM API key configured)"
+      }
+    },
+    "gtm_strategy": {
+      "idea_name": "MedTrack AI",
+      "positioning_headline": "Stop Throwing Away Groceries. Cook Delicious Meals and Save $1,500 a Year with a Single Photo.",
+      "elevator_pitch": "MedTrack AI is the smart mobile kitchen assistant that saves everyday households $1,500 a year. Simply snap a photo of your supermarket grocery receipt; our AI automatically tracks expiration dates, alerts you before food spoils, and suggests delicious 15-minute recipes using what is already in your fridge. No tedious typing, no food waste, and more money in your pocket every month.",
+      "acquisition_channels": [
+        {
+          "channel_name": "Viral Short-Form Cooking Video Content (TikTok, Instagram Reels, YouTube Shorts)",
+          "channel_type": "Inbound",
+          "strategy_details": "Publish 3x weekly organic videos showing 'Making a $30 restaurant dinner out of leftovers expiring in my fridge today'. Include clear call-to-action to download SmartPantry AI.",
+          "expected_cac": "$0.40 \u2013 $1.20 per acquired app install (Organic & Creator partnerships)",
+          "scalability": "High"
+        },
+        {
+          "channel_name": "College Campus Student Ambassadors & Apartment Community Partnerships",
+          "channel_type": "Outbound",
+          "strategy_details": "Partner with university sustainability student clubs and residential student housing groups to run 'Zero Food Waste Dorm Challenges' with free 3-month Pro trials.",
+          "expected_cac": "$1.50 \u2013 $3.00 per activated user",
+          "scalability": "Medium"
+        },
+        {
+          "channel_name": "Grocery Delivery & Supermarket Loyalty App Cross-Promotions",
+          "channel_type": "Partnership",
+          "strategy_details": "Co-marketing integrations with digital grocery delivery services and digital coupon blogs to offer SmartPantry Pro as a bundled pantry efficiency tool.",
+          "expected_cac": "$2.00 \u2013 $4.00 per paid subscriber",
+          "scalability": "High"
+        }
+      ],
+      "pricing_model_structure": "Freemium ($4.99/month for Pro unlimited receipt scanning and custom meal plans)",
+      "pricing_tiers": [
+        {
+          "tier_name": "Free (Basic Pantry)",
+          "price_point": "Free Forever ($0)",
+          "target_customer_size": "Casual cooks and early adopters",
+          "included_features": [
+            "Manual pantry inventory tracking (up to 30 items)",
+            "Basic expiration date alerts (24 hours before)",
+            "3 AI recipe recommendations per week",
+            "Standard grocery shopping checklist"
+          ]
+        },
+        {
+          "tier_name": "SmartPantry Pro (Monthly)",
+          "price_point": "$4.99 / month (Cancel anytime)",
+          "target_customer_size": "Busy professionals and young couples cooking at home",
+          "included_features": [
+            "Unlimited 1-second grocery receipt photo scanning",
+            "Smart 48-hour and 24-hour perishable expiration push alerts",
+            "Unlimited 'What's in my fridge' recipe generation",
+            "Household '$ Saved This Month' financial analytics dashboard",
+            "Dietary preferences & allergy customizer (Gluten-free, Vegan, Keto)"
+          ]
+        },
+        {
+          "tier_name": "Annual Household Plan",
+          "price_point": "$39.99 / year ($3.33/month \u2014 Save 33%)",
+          "target_customer_size": "Families and budget-conscious multi-person households",
+          "included_features": [
+            "All Pro Monthly features",
+            "Multi-device household family sharing (up to 5 family members)",
+            "Weekly automated meal planning & leftover reduction schedule",
+            "Priority customer support & early access to new AI features"
+          ]
+        }
+      ],
+      "launch_phases": [
+        {
+          "phase_name": "Phase 1: Private Alpha (50 Beta Households)",
+          "duration": "Months 1 to 2",
+          "objectives": [
+            "Recruit 50 test households across young professionals and college students",
+            "Refine receipt OCR accuracy to >92% across top 5 supermarket chains",
+            "Measure verified monthly grocery dollar savings per household"
+          ],
+          "target_metric": "Achieve >65% Day-14 retention and verify average $45/month savings per beta user"
+        },
+        {
+          "phase_name": "Phase 2: App Store & Social Viral Launch",
+          "duration": "Months 3 to 5",
+          "objectives": [
+            "Launch iOS App Store and Google Play apps with $4.99/mo freemium paywall",
+            "Execute influencer seeding campaign with 15 food waste and frugal living TikTok creators",
+            "Implement in-app 'Invite a Friend, Get 1 Month Pro Free' referral loop"
+          ],
+          "target_metric": "Reach 25,000 active app downloads and $8,000 Monthly Recurring Revenue"
+        },
+        {
+          "phase_name": "Phase 3: National Scale & Grocery API Integrations",
+          "duration": "Months 6 to 12",
+          "objectives": [
+            "Launch direct digital e-receipt sync with Instacart, Walmart, and Target accounts",
+            "Introduce CPG brand-sponsored recipe ingredient partnerships",
+            "Scale paid acquisition with target 4-month payback period"
+          ],
+          "target_metric": "150,000+ active users and $50,000+ Monthly Recurring Revenue run-rate"
+        }
+      ],
+      "sales_cycle_estimate": "Instant consumer decision (<5 minutes from app download to free trial activation)",
+      "cac_to_ltv_target": "Target LTV:CAC > 4:1 with an average payback period under 3 months based on $50 annual customer value.",
+      "agent_metadata": {
+        "agent_name": "Go-To-Market Strategy Module",
+        "model_used": "FALLBACK_RULE_BASED",
+        "generated_at": "2026-11-25T10:48:29.416332Z",
+        "status": "partial (No active LLM API key configured)"
+      }
+    }
+  },
+  "chat_history": []
+}
